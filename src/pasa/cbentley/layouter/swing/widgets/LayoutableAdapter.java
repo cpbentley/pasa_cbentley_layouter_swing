@@ -128,7 +128,7 @@ public class LayoutableAdapter implements ILayoutable, ITechLayout {
    }
 
    public void repaintLayoutable() {
-  
+
       c.repaint();
    }
 
@@ -195,7 +195,6 @@ public class LayoutableAdapter implements ILayoutable, ITechLayout {
    }
 
    public ILayoutRequestListener getLayoutRequestListener() {
-      // TODO Auto-generated method stub
       return null;
    }
 
@@ -210,6 +209,10 @@ public class LayoutableAdapter implements ILayoutable, ITechLayout {
    public int getPozeXComputed() {
       layoutUpdatePositionXCheck();
       return getPozeX();
+   }
+
+   public ILayoutable getLayoutableEtalon(int etalonType) {
+      return null;
    }
 
    public int getPozeY() {

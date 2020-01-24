@@ -7,6 +7,8 @@ package pasa.cbentley.layouter.swing.widgets;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
@@ -24,6 +26,7 @@ public class BLFrame extends JFrame implements IStringable {
 
    protected final SwingLayouterCtx slc;
 
+   private Runnable exitRun;
    public BLFrame(SwingLayouterCtx slc) {
       this.slc = slc;
       panel = new BLPanel(slc);
@@ -44,6 +47,35 @@ public class BLFrame extends JFrame implements IStringable {
    }
 
    public void showDefClosePackLocationNull() {
+      this.addWindowListener(new WindowListener() {
+         
+         public void windowOpened(WindowEvent e) {
+            
+         }
+         
+         public void windowIconified(WindowEvent e) {
+            
+         }
+         
+         public void windowDeiconified(WindowEvent e) {
+         }
+         
+         public void windowDeactivated(WindowEvent e) {
+         }
+         
+         public void windowClosing(WindowEvent e) {
+            if(exitRun != null) {
+               exitRun.run();
+            }
+         }
+         
+         public void windowClosed(WindowEvent e) {
+         }
+         
+         public void windowActivated(WindowEvent e) {
+         }
+      });
+      
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
       this.pack();
@@ -92,6 +124,14 @@ public class BLFrame extends JFrame implements IStringable {
 
    public UCtx toStringGetUCtx() {
       return slc.getUCtx();
+   }
+
+   public Runnable getExitRun() {
+      return exitRun;
+   }
+
+   public void setExitRun(Runnable exitRun) {
+      this.exitRun = exitRun;
    }
 
    //#enddebug

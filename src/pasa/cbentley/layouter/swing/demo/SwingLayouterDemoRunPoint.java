@@ -19,7 +19,7 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.BaseDLogger;
-import pasa.cbentley.core.src4.logging.IConfig;
+import pasa.cbentley.core.src4.logging.IDLogConfig;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.core.src4.logging.ITechConfig;
 import pasa.cbentley.core.src4.logging.ITechLvl;
@@ -45,7 +45,7 @@ public class SwingLayouterDemoRunPoint {
       UCtx uc = new UCtx();
       C5Ctx c5 = new C5Ctx(uc);
       BaseDLogger loggerFirst = (BaseDLogger) uc.toDLog();
-      IConfig config = loggerFirst.getDefault().getConfig();
+      IDLogConfig config = loggerFirst.getDefault().getConfig();
       config.setLevelGlobal(ITechLvl.LVL_03_FINEST);
       config.setFlagPrint(ITechConfig.MASTER_FLAG_02_OPEN_ALL_PRINT, true);
 

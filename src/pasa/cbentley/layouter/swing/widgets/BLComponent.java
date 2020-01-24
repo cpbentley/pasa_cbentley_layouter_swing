@@ -353,6 +353,10 @@ public class BLComponent extends JComponent implements ILayoutable {
       dc.appendWithSpaceIfNotNull('[', getName(), ']');
    }
 
+   public ILayoutable getLayoutableEtalon(int etalonType) {
+      return null;
+   }
+
    //#enddebug
 
 }

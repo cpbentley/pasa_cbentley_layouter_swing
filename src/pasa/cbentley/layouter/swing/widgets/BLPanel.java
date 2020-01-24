@@ -55,6 +55,10 @@ public class BLPanel extends JPanel implements ILayoutable, IStringable {
       layoutableAdapter.setPozerYTop(pozerAt0);
    }
 
+   public ILayoutable getLayoutableEtalon(int etalonType) {
+      return layoutableAdapter.getLayoutableEtalon(etalonType);
+   }
+
    private void addBLComponentValidate(BLComponent bl) {
       //validate the sizers and pozers
       Zer2DArea area = bl.getLayoutableAdapter().getArea();
