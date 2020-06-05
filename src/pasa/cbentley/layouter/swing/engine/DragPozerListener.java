@@ -1,5 +1,5 @@
 /*
- * (c) 2018-2019 Charles-Philip Bentley
+ * (c) 2018-2020 Charles-Philip Bentley
  * This code is licensed under MIT license (see LICENSE.txt for details)
  */
 package pasa.cbentley.layouter.swing.engine;
@@ -17,8 +17,7 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.tech.ITechPozer;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
-import pasa.cbentley.layouter.swing.widgets.BLPanel;
-import pasa.cbentley.layouter.swing.widgets.LayoutableAdapter;
+import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
  * Move the object when pressed over, ignores current pozers.. mouse wheel reset layoutable
@@ -37,7 +36,7 @@ public class DragPozerListener implements MouseListener, MouseMotionListener, Mo
 
    private Zer2DArea                areaDragged;
 
-   private LayoutableAdapter        layoutable;
+   private ILayoutableSwing         layoutable;
 
    private boolean                  isPressed;
 
@@ -45,9 +44,9 @@ public class DragPozerListener implements MouseListener, MouseMotionListener, Mo
 
    private int                      pressedY;
 
-   private BLPanel                  root;
+   private JPanelLayoutable     root;
 
-   public DragPozerListener(SwingLayouterCtx slc, LayoutableAdapter layoutable, BLPanel root) {
+   public DragPozerListener(SwingLayouterCtx slc, ILayoutableSwing layoutable, JPanelLayoutable root) {
       this.slc = slc;
       this.root = root;
       if (layoutable == null) {

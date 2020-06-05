@@ -1,8 +1,8 @@
 /*
- * (c) 2018-2019 Charles-Philip Bentley
+ * (c) 2018-2020 Charles-Philip Bentley
  * This code is licensed under MIT license (see LICENSE.txt for details)
  */
-package pasa.cbentley.layouter.swing.widgets;
+package pasa.cbentley.layouter.swing.engine;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -14,118 +14,66 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
+import pasa.cbentley.layouter.src4.engine.Area2DConfigurator;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.engine.Zer2DSizer;
-import pasa.cbentley.layouter.src4.interfaces.ILayoutRequestListener;
+import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
-public class BLComponent extends JComponent implements ILayoutable {
+/**
+ * 
+ * Adapter by inheritance.
+ * 
+ * Use this class if you want to create a custom {@link JComponent} that is a {@link ILayoutable}
+ * 
+ * @author Charles Bentley
+ *
+ */
+public class JComponentLayoutable extends JComponent implements ILayoutableSwing {
 
-   private LayoutableAdapter        layoutableAdapter;
+   private LayEngineSwing           layoutableAdapter;
 
-   private ILayoutRequestListener   requestListener;
+   protected final JComponentReal   real;
 
    protected final SwingLayouterCtx slc;
 
-   public BLComponent(SwingLayouterCtx slc) {
+   public JComponentLayoutable(SwingLayouterCtx slc) {
       this.slc = slc;
-      layoutableAdapter = new LayoutableAdapter(slc, this);
-   }
-
-   public BLComponent(SwingLayouterCtx slc, int layoutID) {
-      this.slc = slc;
-      layoutableAdapter = new LayoutableAdapter(slc, this, layoutID);
+      this.real = new JComponentReal(slc, this);
+      layoutableAdapter = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
    }
 
    public void addDependency(ILayoutable lay, int flags) {
       layoutableAdapter.addDependency(lay, flags);
    }
 
-   public void layoutInvalidatePosition() {
-      layoutableAdapter.layoutInvalidatePosition();
-
-   }
-
-   public void repaintLayoutable() {
-      layoutableAdapter.repaintLayoutable();
-   }
-
-   public int getSizeMaxHeight(ILayoutable layoutable) {
-      return layoutableAdapter.getSizeMaxHeight(layoutable);
-   }
-
-   public int getSizeMaxWidth(ILayoutable layoutable) {
-      return layoutableAdapter.getSizeMaxWidth(layoutable);
-   }
-
-   public void layoutUpdatePositionXCheck() {
-      layoutableAdapter.layoutUpdatePositionXCheck();
-   }
-
-   public void layoutUpdatePositionYCheck() {
-      layoutableAdapter.layoutUpdatePositionYCheck();
-
-   }
-
-   public void layoutUpdateSizeHCheck() {
-      layoutableAdapter.layoutUpdateSizeHCheck();
-
-   }
-
-   public void layoutUpdateSizeWCheck() {
-      layoutableAdapter.layoutUpdateSizeWCheck();
-   }
-
-   public void layoutInvalidateSize() {
-      layoutableAdapter.layoutInvalidateSize();
-   }
-
    public Zer2DArea getArea() {
       return layoutableAdapter.getArea();
+   }
+
+   public JComponent getComponent() {
+      return this;
    }
 
    public ILayoutable[] getDependencies() {
       return layoutableAdapter.getDependencies();
    }
 
-   public int getFontHeight() {
-      return layoutableAdapter.getFontHeight();
+   public Area2DConfigurator getLay() {
+      return layoutableAdapter.getLay();
    }
 
-   public int getFontWidth() {
-      return layoutableAdapter.getFontWidth();
-   }
-
-   public int getSizePaddingWidth() {
-      return getSizeDrawnWidth();
-   }
-
-   public int getSizePaddingHeight() {
-      return getSizeDrawnHeight();
-   }
-
-   public int getSizeBorderWidth() {
-      return getSizeDrawnWidth();
-   }
-
-   public int getSizeBorderHeight() {
-      return getSizeDrawnHeight();
-   }
-
-   public int getSizeContentWidth() {
-      return getSizeDrawnWidth();
-   }
-
-   public int getSizeContentHeight() {
-      return getSizeDrawnHeight();
-   }
-
-   public LayoutableAdapter getLayoutableAdapter() {
+   public LayEngineSwing getLayoutableAdapter() {
       return layoutableAdapter;
    }
 
    public ILayoutable getLayoutableDelegate(ILayoutable source) {
+      return null;
+   }
+
+   public ILayoutable getLayoutableEtalon(int etalonType) {
       return null;
    }
 
@@ -153,16 +101,13 @@ public class BLComponent extends JComponent implements ILayoutable {
       return this;
    }
 
+   public ILayoutDelegate getLayoutDelegate() {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
    public int getLayoutID() {
       return layoutableAdapter.getLayoutID();
-   }
-
-   public ILayoutRequestListener getLayoutRequestListener() {
-      return requestListener;
-   }
-
-   public ILayoutable getParentLayout() {
-      return layoutableAdapter.getParentLayout();
    }
 
    public int getPozeX() {
@@ -181,6 +126,22 @@ public class BLComponent extends JComponent implements ILayoutable {
       return layoutableAdapter.getPozeYComputed();
    }
 
+   public int getSizeBorderHeight() {
+      return getSizeDrawnHeight();
+   }
+
+   public int getSizeBorderWidth() {
+      return getSizeDrawnWidth();
+   }
+
+   public int getSizeContentHeight() {
+      return getSizeDrawnHeight();
+   }
+
+   public int getSizeContentWidth() {
+      return getSizeDrawnWidth();
+   }
+
    public int getSizeDrawnHeight() {
       return layoutableAdapter.getSizeDrawnHeight();
    }
@@ -189,12 +150,20 @@ public class BLComponent extends JComponent implements ILayoutable {
       return layoutableAdapter.getSizeDrawnWidth();
    }
 
-   public int getSizeFromDeletgateHeight() {
-      return layoutableAdapter.getSizeFromDeletgateHeight();
+   public int getSizeFontHeight() {
+      return real.getFontHeight();
    }
 
-   public int getSizeFromDeletgateWidth() {
-      return layoutableAdapter.getSizeFromDeletgateWidth();
+   public int getSizeFontWidth() {
+      return real.getFontWidth();
+   }
+
+   public int getSizePaddingHeight() {
+      return getSizeDrawnHeight();
+   }
+
+   public int getSizePaddingWidth() {
+      return getSizeDrawnWidth();
    }
 
    public int getSizePreferredHeight() {
@@ -204,6 +173,15 @@ public class BLComponent extends JComponent implements ILayoutable {
    public int getSizePreferredWidth() {
       return layoutableAdapter.getSizePreferredWidth();
    }
+
+   public int getSizePropertyValueH(int property) {
+      return real.getSizePropertyValueH(property);
+   }
+
+   public int getSizePropertyValueW(int property) {
+      return real.getSizePropertyValueH(property);
+   }
+
 
    public ByteObject getSizerH() {
       return layoutableAdapter.getArea().getSizerH();
@@ -221,17 +199,12 @@ public class BLComponent extends JComponent implements ILayoutable {
       return getSizePreferredWidth();
    }
 
-   public int getWidthDelegate() {
-      return this.getSizeFromDeletgateWidth();
-
-   }
-
    public int getWidthDrawn() {
       return this.getSizeDrawnWidth();
    }
 
    public int getWidthFont() {
-      return this.getFontWidth();
+      return this.getSizeFontWidth();
    }
 
    public int getWidthPreferred() {
@@ -246,6 +219,15 @@ public class BLComponent extends JComponent implements ILayoutable {
       layoutableAdapter.layoutInvalidate();
    }
 
+   public void layoutInvalidatePosition() {
+      layoutableAdapter.layoutInvalidatePosition();
+
+   }
+
+   public void layoutInvalidateSize() {
+      layoutableAdapter.layoutInvalidateSize();
+   }
+
    public boolean layoutIsValidPosition() {
       return layoutableAdapter.layoutIsValidPosition();
    }
@@ -258,12 +240,17 @@ public class BLComponent extends JComponent implements ILayoutable {
       layoutableAdapter.layoutUpdateDependencies(type);
    }
 
-   public void layoutUpdatePosition() {
-      layoutableAdapter.layoutUpdatePosition();
-   }
-
    public void layoutUpdatePositionCheck() {
       layoutableAdapter.layoutUpdatePositionCheck();
+   }
+
+   public void layoutUpdatePositionXCheck() {
+      layoutableAdapter.layoutUpdatePositionXCheck();
+   }
+
+   public void layoutUpdatePositionYCheck() {
+      layoutableAdapter.layoutUpdatePositionYCheck();
+
    }
 
    /**
@@ -271,6 +258,15 @@ public class BLComponent extends JComponent implements ILayoutable {
     */
    public void layoutUpdateSizeCheck() {
       layoutableAdapter.layoutUpdateSizeCheck();
+   }
+
+   public void layoutUpdateSizeHCheck() {
+      layoutableAdapter.layoutUpdateSizeHCheck();
+
+   }
+
+   public void layoutUpdateSizeWCheck() {
+      layoutableAdapter.layoutUpdateSizeWCheck();
    }
 
    @Override
@@ -294,6 +290,10 @@ public class BLComponent extends JComponent implements ILayoutable {
       g.fillRect(x, y, width, height);
    }
 
+   public void repaintLayoutable() {
+      layoutableAdapter.repaintLayoutable();
+   }
+
    public void setArea(Zer2DArea area) {
       layoutableAdapter.setArea(area);
    }
@@ -303,16 +303,12 @@ public class BLComponent extends JComponent implements ILayoutable {
    }
 
    public void setPozer(ByteObject pozerX, ByteObject pozerY) {
-      layoutableAdapter.setPozerXStart(pozerX);
-      layoutableAdapter.setPozerYTop(pozerY);
-   }
-
-   public void setRequestListener(ILayoutRequestListener requestListener) {
-      this.requestListener = requestListener;
+      layoutableAdapter.getLay().setPozerXStart(pozerX);
+      layoutableAdapter.getLay().setPozerYTop(pozerY);
    }
 
    public void setSizer(ByteObject sizerW, ByteObject sizerH) {
-      layoutableAdapter.setSizer(new Zer2DSizer(slc, sizerW, sizerH));
+      layoutableAdapter.getLay().setSizer(new Zer2DSizer(slc, sizerW, sizerH));
    }
 
    //#mdebug
@@ -327,7 +323,7 @@ public class BLComponent extends JComponent implements ILayoutable {
    public void toString(Dctx dc) {
       dc.root(this, "BLComponent");
       toStringPrivate(dc);
-      slc.d((JComponent) this, dc.nLevel());
+      slc.toSD().d((JComponent) this, dc.newLevel());
       dc.nlLvl(layoutableAdapter, "layoutableAdapter");
    }
 
@@ -335,26 +331,22 @@ public class BLComponent extends JComponent implements ILayoutable {
       return Dctx.toString1Line(this);
    }
 
-   public String toStringName() {
-      return layoutableAdapter.toStringName();
-   }
-
    public void toString1Line(Dctx dc) {
       dc.root1Line(this, "BLComponent");
       toStringPrivate(dc);
-      slc.d1((JComponent) this, dc.nLevel1Line());
+      slc.toSD().d1((JComponent) this, dc.newLevel1Line());
    }
 
    public UCtx toStringGetUCtx() {
       return slc.getUCtx();
    }
 
-   private void toStringPrivate(Dctx dc) {
-      dc.appendWithSpaceIfNotNull('[', getName(), ']');
+   public String toStringName() {
+      return layoutableAdapter.toStringName();
    }
 
-   public ILayoutable getLayoutableEtalon(int etalonType) {
-      return null;
+   private void toStringPrivate(Dctx dc) {
+      dc.appendWithSpaceIfNotNull('[', getName(), ']');
    }
 
    //#enddebug

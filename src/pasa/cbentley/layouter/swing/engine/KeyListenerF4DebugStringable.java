@@ -1,13 +1,11 @@
 /*
- * (c) 2018-2019 Charles-Philip Bentley
+ * (c) 2018-2020 Charles-Philip Bentley
  * This code is licensed under MIT license (see LICENSE.txt for details)
  */
-package pasa.cbentley.layouter.swing.widgets;
+package pasa.cbentley.layouter.swing.engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.JComponent;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
@@ -15,15 +13,26 @@ import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 
-public class KeyListenerRoot implements KeyListener, IStringable {
+/**
+ * Listens for some keys to debug the {@link IStringable}
+ * 
+ * @author Charles Bentley
+ *
+ */
+public class KeyListenerF4DebugStringable implements KeyListener, IStringable {
 
    private SwingLayouterCtx slc;
 
-   private IStringable      comp;
+   private IStringable      stringable;
 
-   public KeyListenerRoot(SwingLayouterCtx slc, IStringable comp) {
+   /**
+    * 
+    * @param slc
+    * @param stringable
+    */
+   public KeyListenerF4DebugStringable(SwingLayouterCtx slc, IStringable stringable) {
       this.slc = slc;
-      this.comp = comp;
+      this.stringable = stringable;
 
    }
 
@@ -33,10 +42,10 @@ public class KeyListenerRoot implements KeyListener, IStringable {
 
    public void keyPressed(KeyEvent e) {
       //#debug
-      toDLog().pFlow("=" + e.getKeyCode(), null, KeyListenerRoot.class, "keyPressed", LVL_05_FINE, true);
+      toDLog().pFlow("=" + e.getKeyCode(), null, KeyListenerF4DebugStringable.class, "keyPressed", LVL_05_FINE, true);
 
       if (e.getKeyCode() == KeyEvent.VK_F4) {
-         toDLog().pAlways("F4 Cmd Debug", comp, KeyListenerRoot.class, "keyPressed");
+         toDLog().pAlways("F4 Cmd Debug", stringable, KeyListenerF4DebugStringable.class, "keyPressed");
       }
    }
 
