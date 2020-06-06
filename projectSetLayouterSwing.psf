@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,https://github.com/cpbentley/java_src4_compat_j2se,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_byteobjects_src4,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_core_j2se,master,pasa_cbentley_core_j2se"/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_core_src4,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_core_src5,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_layouter_src4,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_layouter_swing,master,."/>
+<project reference="1.0,https://github.com/cpbentley/pasa_cbentley_swing,master,."/>
+</provider>
+</psf>

@@ -17,6 +17,13 @@ Library for layouting Swing JComponents using The Layouter
 
 # pasa_cbentley_layouter_swing
 
+### Eclipse setup with projectSet.psf file
+
+ * Download [projectSetLayouterSwing.psf](https://github.com/cpbentley/pasa_cbentley_app_hello_ctx/blob/master/projectSetLayouterSwing.psf)
+ * Start with an empty Eclipse workspace
+ * Go to File | Import | Team | Team Project Set
+ * Select the projectSetLayouterSwing.psf and import it
+
 #### Github Repository Dependencies
 
 num | id | Right Click -> Copy Link Address
