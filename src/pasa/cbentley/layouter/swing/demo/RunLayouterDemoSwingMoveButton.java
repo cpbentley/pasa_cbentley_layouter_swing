@@ -132,7 +132,7 @@ public class RunLayouterDemoSwingMoveButton extends RunLayouterDemoSwingAbstract
       JComponentLayoutable trans = new JComponentLayoutable(slc);
       trans.setName("trans");
       trans.setBackground(new Color(40, 210, 100, 128));
-      LayEngineSwing laTrans = trans.getLayoutableAdapter();
+      LayEngineSwing laTrans = trans.getEngineSwing();
       //size is defined by anchor points
       laTrans.getLay().layPoz_StartToEnd_Of(red);
       laTrans.getLay().layPoz_EndToStart_Of(pink);

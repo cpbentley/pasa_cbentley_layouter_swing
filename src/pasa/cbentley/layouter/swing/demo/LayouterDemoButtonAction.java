@@ -11,11 +11,13 @@ import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 
 public class LayouterDemoButtonAction implements ActionListener {
 
-   protected final SwingLayouterCtx    slc;
+   protected final Class               c;
 
    protected final LayouterDemoFactory fac;
 
-   protected final Class c;
+   protected final SwingLayouterCtx    slc;
+
+   private String                      text;
 
    public LayouterDemoButtonAction(SwingLayouterCtx slc, LayouterDemoFactory fac, Class c) {
       this.slc = slc;
@@ -25,7 +27,18 @@ public class LayouterDemoButtonAction implements ActionListener {
 
    public void actionPerformed(ActionEvent e) {
       RunLayouterDemoSwingAbstract run = fac.createNew(c);
+      
+      //sets the title
+      
       run.run();
+   }
+
+   public String getText() {
+      return text;
+   }
+
+   public void setText(String text) {
+      this.text = text;
    }
 
 }

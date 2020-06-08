@@ -13,6 +13,7 @@ import pasa.cbentley.core.src4.ctx.ConfigUSettable;
 import pasa.cbentley.core.src4.ctx.IConfigU;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.layouter.src4.engine.LayoutDelegateAdapter;
 import pasa.cbentley.layouter.src4.engine.LayoutWillListenerAdapter;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
@@ -55,7 +56,7 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
 
    public void buildDemo(JPanelLayoutable panel) {
 
-      ILayoutDelegate delegate = new ILayoutDelegate() {
+      ILayoutDelegate delegate = new LayoutDelegateAdapter(slc) {
 
          public ILayoutable getDelegateSizer(ByteObject sizer, ILayoutable layoutable, int ctx) {
             if (ctx == ITechLayout.CTX_1_WIDTH) {
@@ -70,55 +71,14 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
             return null;
          }
 
-         public int getDelegateSizeWidth(ByteObject sizer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
-            return 0;
-         }
-
          public int getDelegateSizeHeight(ByteObject sizer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
+            if (layoutable == panelOrange) {
+               int h = slc.getUCtx().getRandom().nextInt(300) + 10;
+               return h;
+            }
             return 0;
          }
 
-         public int getDelegatePozerY(ByteObject pozer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
-            return 0;
-         }
-
-         public int getDelegatePozerX(ByteObject pozer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
-            return 0;
-         }
-
-         public ILayoutable getDelegateEtalonePozer(ByteObject pozer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
-            return null;
-         }
-
-         public ILayoutable getDelegateEtaloneSizer(ByteObject sizer, ILayoutable layoutable) {
-            // TODO Auto-generated method stub
-            return null;
-         }
-
-         public String toString1Line() {
-            // TODO Auto-generated method stub
-            return null;
-         }
-
-         public void toString(Dctx dc) {
-            // TODO Auto-generated method stub
-            
-         }
-
-         public void toString1Line(Dctx dc) {
-            // TODO Auto-generated method stub
-            
-         }
-
-         public UCtx toStringGetUCtx() {
-            // TODO Auto-generated method stub
-            return null;
-         }
       };
 
       createOrange(panel, delegate);
@@ -182,6 +142,15 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
       panel.setBackground(Color.ORANGE);
       //first added is on the bottom
       panelOrange = root.addLayoutable(panel);
+      
+      ByteObject pozerAtPixel0Lazy = slc.getPozerFactory().getPozerAtPixel0Lazy();
+      
+      panelOrange.getLay().setPozerXStart(pozerAtPixel0Lazy);
+      panelOrange.getLay().setPozerYTop(pozerAtPixel0Lazy);
+      
+      ByteObject sizer = slc.getSizerFactory().getSizerListener(delegate);
+      panelOrange.getLay().setSizerH(sizer);
+      panelOrange.getLay().setSizerW(sizer);
 
    }
 

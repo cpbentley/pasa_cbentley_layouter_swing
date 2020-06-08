@@ -95,7 +95,11 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
 
    protected ByteObject             sizerRatio30;
 
-   protected JPanelLayoutable   panel;
+   protected ByteObject             sizerRatio10;
+
+   protected ByteObject             sizerRatio5;
+
+   protected JPanelLayoutable       panel;
 
    private String                   fileName;
 
@@ -118,6 +122,8 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
 
       sizerRatio50 = sizerFac.getSizerRatio100Parent(50);
       sizerRatio30 = sizerFac.getSizerRatio100Parent(30);
+      sizerRatio10 = sizerFac.getSizerRatio100Parent(10);
+      sizerRatio5 = sizerFac.getSizerRatio100Parent(5);
 
       centerCenter = pozerFac.getPozerCenterToCenter();
 
@@ -164,7 +170,7 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
     * @param exitRun
     */
    public void setExitRun(Runnable exitRun) {
-      if(this.exitRun != null) {
+      if (this.exitRun != null) {
          //multi run
          throw new RuntimeException("not implemented");
       }
@@ -198,14 +204,14 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
       }
 
       setExitRun(new SaveCtxTask(c5, fileName));
-      
+
    }
 
    protected CBentleyFrame initUIThreadInsideSwing() {
       JFrameLayouterDemo frame = new JFrameLayouterDemo(slc);
       panel = frame.getPanelLayouter();
       this.frame = frame;
-      
+
       buildDemo(panel);
 
       frame.setTitle(this.getClass().getSimpleName());
@@ -217,7 +223,7 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
 
       //#debug
       //uc.toDLog().pFlow("Start", frame, RunLayouterDemoSwingAbstract.class, "initUIThreadInsideSwing@line185");
-      
+
       return frame;
    }
 

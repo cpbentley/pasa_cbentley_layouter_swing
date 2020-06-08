@@ -7,6 +7,7 @@ package pasa.cbentley.layouter.swing.interfaces;
 import javax.swing.JComponent;
 
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
+import pasa.cbentley.layouter.swing.engine.LayEngineSwing;
 
 public interface ILayoutableSwing extends ILayoutable {
 
@@ -15,5 +16,7 @@ public interface ILayoutableSwing extends ILayoutable {
     * @return should not be null
     */
    public JComponent getComponent();
+   
+   public LayEngineSwing getEngineSwing();
 
 }

@@ -33,7 +33,12 @@ import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
  */
 public class JComponentLayoutable extends JComponent implements ILayoutableSwing {
 
-   private LayEngineSwing           layoutableAdapter;
+   /**
+    * 
+    */
+   private static final long        serialVersionUID = 3760546493246702192L;
+
+   private LayEngineSwing           engineSwing;
 
    protected final JComponentReal   real;
 
@@ -42,15 +47,15 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    public JComponentLayoutable(SwingLayouterCtx slc) {
       this.slc = slc;
       this.real = new JComponentReal(slc, this);
-      layoutableAdapter = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
+      engineSwing = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
    }
 
    public void addDependency(ILayoutable lay, int flags) {
-      layoutableAdapter.addDependency(lay, flags);
+      engineSwing.addDependency(lay, flags);
    }
 
    public Zer2DArea getArea() {
-      return layoutableAdapter.getArea();
+      return engineSwing.getArea();
    }
 
    public JComponent getComponent() {
@@ -58,15 +63,15 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public ILayoutable[] getDependencies() {
-      return layoutableAdapter.getDependencies();
+      return engineSwing.getDependencies();
+   }
+
+   public LayEngineSwing getEngineSwing() {
+      return engineSwing;
    }
 
    public Area2DConfigurator getLay() {
-      return layoutableAdapter.getLay();
-   }
-
-   public LayEngineSwing getLayoutableAdapter() {
-      return layoutableAdapter;
+      return engineSwing.getLay();
    }
 
    public ILayoutable getLayoutableDelegate(ILayoutable source) {
@@ -86,7 +91,7 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public ILayoutable getLayoutableParent() {
-      return layoutableAdapter.getLayoutableParent();
+      return engineSwing.getLayoutableParent();
    }
 
    public ILayoutable getLayoutableViewContext() {
@@ -107,23 +112,23 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public int getLayoutID() {
-      return layoutableAdapter.getLayoutID();
+      return engineSwing.getLayoutID();
    }
 
    public int getPozeX() {
-      return layoutableAdapter.getPozeX();
+      return engineSwing.getPozeX();
    }
 
    public int getPozeXComputed() {
-      return layoutableAdapter.getPozeXComputed();
+      return engineSwing.getPozeXComputed();
    }
 
    public int getPozeY() {
-      return layoutableAdapter.getPozeY();
+      return engineSwing.getPozeY();
    }
 
    public int getPozeYComputed() {
-      return layoutableAdapter.getPozeYComputed();
+      return engineSwing.getPozeYComputed();
    }
 
    public int getSizeBorderHeight() {
@@ -143,11 +148,11 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public int getSizeDrawnHeight() {
-      return layoutableAdapter.getSizeDrawnHeight();
+      return engineSwing.getSizeDrawnHeight();
    }
 
    public int getSizeDrawnWidth() {
-      return layoutableAdapter.getSizeDrawnWidth();
+      return engineSwing.getSizeDrawnWidth();
    }
 
    public int getSizeFontHeight() {
@@ -167,11 +172,11 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public int getSizePreferredHeight() {
-      return layoutableAdapter.getSizePreferredHeight();
+      return engineSwing.getSizePreferredHeight();
    }
 
    public int getSizePreferredWidth() {
-      return layoutableAdapter.getSizePreferredWidth();
+      return engineSwing.getSizePreferredWidth();
    }
 
    public int getSizePropertyValueH(int property) {
@@ -182,13 +187,12 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
       return real.getSizePropertyValueH(property);
    }
 
-
    public ByteObject getSizerH() {
-      return layoutableAdapter.getArea().getSizerH();
+      return engineSwing.getArea().getSizerH();
    }
 
    public ByteObject getSizerW() {
-      return layoutableAdapter.getArea().getSizerW();
+      return engineSwing.getArea().getSizerW();
    }
 
    public int getSizeUnitHeight() {
@@ -216,40 +220,40 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public void layoutInvalidate() {
-      layoutableAdapter.layoutInvalidate();
+      engineSwing.layoutInvalidate();
    }
 
    public void layoutInvalidatePosition() {
-      layoutableAdapter.layoutInvalidatePosition();
+      engineSwing.layoutInvalidatePosition();
 
    }
 
    public void layoutInvalidateSize() {
-      layoutableAdapter.layoutInvalidateSize();
+      engineSwing.layoutInvalidateSize();
    }
 
    public boolean layoutIsValidPosition() {
-      return layoutableAdapter.layoutIsValidPosition();
+      return engineSwing.layoutIsValidPosition();
    }
 
    public boolean layoutIsValidSize() {
-      return layoutableAdapter.layoutIsValidSize();
+      return engineSwing.layoutIsValidSize();
    }
 
    public void layoutUpdateDependencies(int type) {
-      layoutableAdapter.layoutUpdateDependencies(type);
+      engineSwing.layoutUpdateDependencies(type);
    }
 
    public void layoutUpdatePositionCheck() {
-      layoutableAdapter.layoutUpdatePositionCheck();
+      engineSwing.layoutUpdatePositionCheck();
    }
 
    public void layoutUpdatePositionXCheck() {
-      layoutableAdapter.layoutUpdatePositionXCheck();
+      engineSwing.layoutUpdatePositionXCheck();
    }
 
    public void layoutUpdatePositionYCheck() {
-      layoutableAdapter.layoutUpdatePositionYCheck();
+      engineSwing.layoutUpdatePositionYCheck();
 
    }
 
@@ -257,16 +261,16 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
     * 
     */
    public void layoutUpdateSizeCheck() {
-      layoutableAdapter.layoutUpdateSizeCheck();
+      engineSwing.layoutUpdateSizeCheck();
    }
 
    public void layoutUpdateSizeHCheck() {
-      layoutableAdapter.layoutUpdateSizeHCheck();
+      engineSwing.layoutUpdateSizeHCheck();
 
    }
 
    public void layoutUpdateSizeWCheck() {
-      layoutableAdapter.layoutUpdateSizeWCheck();
+      engineSwing.layoutUpdateSizeWCheck();
    }
 
    @Override
@@ -291,24 +295,24 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public void repaintLayoutable() {
-      layoutableAdapter.repaintLayoutable();
+      engineSwing.repaintLayoutable();
    }
 
    public void setArea(Zer2DArea area) {
-      layoutableAdapter.setArea(area);
+      engineSwing.setArea(area);
    }
 
    public void setParentLayout(ILayoutable parentLayout) {
-      this.layoutableAdapter.setParentLayout(parentLayout);
+      this.engineSwing.setParentLayout(parentLayout);
    }
 
    public void setPozer(ByteObject pozerX, ByteObject pozerY) {
-      layoutableAdapter.getLay().setPozerXStart(pozerX);
-      layoutableAdapter.getLay().setPozerYTop(pozerY);
+      engineSwing.getLay().setPozerXStart(pozerX);
+      engineSwing.getLay().setPozerYTop(pozerY);
    }
 
    public void setSizer(ByteObject sizerW, ByteObject sizerH) {
-      layoutableAdapter.getLay().setSizer(new Zer2DSizer(slc, sizerW, sizerH));
+      engineSwing.getLay().setSizer(new Zer2DSizer(slc, sizerW, sizerH));
    }
 
    //#mdebug
@@ -321,10 +325,10 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public void toString(Dctx dc) {
-      dc.root(this, "BLComponent");
+      dc.root(this, JComponentLayoutable.class, 324);
       toStringPrivate(dc);
       slc.toSD().d((JComponent) this, dc.newLevel());
-      dc.nlLvl(layoutableAdapter, "layoutableAdapter");
+      dc.nlLvl(engineSwing, "layoutableAdapter");
    }
 
    public String toString1Line() {
@@ -332,7 +336,7 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "BLComponent");
+      dc.root1Line(this, JComponentLayoutable.class);
       toStringPrivate(dc);
       slc.toSD().d1((JComponent) this, dc.newLevel1Line());
    }
@@ -342,7 +346,7 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public String toStringName() {
-      return layoutableAdapter.toStringName();
+      return engineSwing.toStringName();
    }
 
    private void toStringPrivate(Dctx dc) {

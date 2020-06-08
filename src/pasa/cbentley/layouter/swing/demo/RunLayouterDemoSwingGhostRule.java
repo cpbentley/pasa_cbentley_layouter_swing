@@ -17,7 +17,9 @@ import pasa.cbentley.layouter.src4.engine.LayoutWillListenerAdapter;
 import pasa.cbentley.layouter.src4.engine.LayoutableGhost;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.swing.engine.ConfiguratorForSwing;
+import pasa.cbentley.layouter.swing.engine.JComponentLayoutable;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
+import pasa.cbentley.layouter.swing.engine.LayEngineSwing;
 import pasa.cbentley.layouter.swing.engine.LayoutableChainSwing;
 
 public class RunLayouterDemoSwingGhostRule extends RunLayouterDemoSwingAbstract {
@@ -48,13 +50,30 @@ public class RunLayouterDemoSwingGhostRule extends RunLayouterDemoSwingAbstract 
       LayoutableGhost ruleV80 = panel.createGhostLineVertical(80);
       ruleV80.toStringSetDebugName("rule vertical 80%");
 
-      LayoutableGhost ruleH10 = panel.createGhostLineHorizontal(10);
+      LayoutableGhost ruleH10 = panel.createGhostLineHorizontal(20);
       ruleV80.toStringSetDebugName("rule horizontal 10%");
 
       
       JButton butOver = new JButton("Send Message");
       ILayoutable butOverLayoutable = panel.addLayoutableInsideStartEndTopBot(butOver, ruleV40, ruleV80, ruleH10, parent);
 
+      //shows a semi transparent color over the button with a margin of 10 percent the contextual size
+      JComponentLayoutable trans = new JComponentLayoutable(slc);
+      trans.setName("trans");
+      trans.setBackground(new Color(40, 210, 100, 128));
+      LayEngineSwing laTrans = trans.getEngineSwing();
+      
+      //size is defined by anchor points
+      panel.addInsideStartEndTopBot(trans, butOverLayoutable, butOverLayoutable, butOverLayoutable, butOverLayoutable);
+
+      JComponentLayoutable transRed = new JComponentLayoutable(slc);
+      transRed.setName("trans");
+      transRed.setBackground(new Color(128, 240, 10, 28));
+      
+      //size is defined by anchor points
+      panel.addInsideStartEndTopBot(transRed, parent);
+
+      
       JLabel labelName = new JLabel("Name:");
       labelName.setBackground(Color.WHITE);
       ILayoutable labelNameLayoutable = panel.addLayoutableStartEndInsideBelow(labelName, ruleV10, ruleV40, ruleH10);

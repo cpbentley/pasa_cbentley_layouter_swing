@@ -43,10 +43,10 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
 
    public LayoutableAdapterForJComponent(SwingLayouterCtx slc, JComponent component) {
       this.slc = slc;
-      
+
       //#debug
       slc.toStringCheckNull(component);
-      
+
       this.component = component;
       this.real = new JComponentReal(slc, component);
       this.engine = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
@@ -60,10 +60,6 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
       return engine.getArea();
    }
 
-   public Area2DConfigurator lay() {
-      return engine.getLay();
-   }
-   
    public JComponent getComponent() {
       return component;
    }
@@ -73,6 +69,10 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
    }
 
    public LayEngineSwing getEngine() {
+      return engine;
+   }
+
+   public LayEngineSwing getEngineSwing() {
       return engine;
    }
 
@@ -172,6 +172,10 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
       return real.getSizePropertyValueH(property);
    }
 
+   public Area2DConfigurator lay() {
+      return engine.getLay();
+   }
+
    public void layoutInvalidate() {
       engine.layoutInvalidate();
    }
@@ -242,17 +246,14 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
    public void toString(Dctx dc) {
       dc.root(this, LayoutableAdapterForJComponent.class);
       toStringPrivate(dc);
-
-      dc.nlLvl(engine, LayEngineSwing.class);
       dc.nlLvl(real, JComponentReal.class);
-
+      dc.nlLvl(engine, LayEngineSwing.class);
    }
+
 
    public String toString1Line() {
       return Dctx.toString1Line(this);
    }
-
-   //#enddebug
 
    public void toString1Line(Dctx dc) {
       dc.root1Line(this, LayoutableAdapterForJComponent.class);
@@ -271,4 +272,5 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
    private void toStringPrivate(Dctx dc) {
 
    }
+   //#enddebug
 }

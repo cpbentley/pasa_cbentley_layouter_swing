@@ -6,7 +6,6 @@ package pasa.cbentley.layouter.swing.engine;
 
 import java.awt.Color;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -30,7 +29,7 @@ public class ConfiguratorForSwing implements IStringable {
 
    protected IntToObjects           extras;
 
-   protected JPanelLayoutable   panel;
+   protected JPanelLayoutable       panel;
 
    protected final SwingLayouterCtx slc;
 
@@ -39,6 +38,21 @@ public class ConfiguratorForSwing implements IStringable {
       this.panel = panel;
       extras = new IntToObjects(slc.getUCtx());
 
+   }
+
+   /**
+    * 
+    * @param c
+    * @param pozerCorner1
+    * @return
+    */
+   public ILayoutable addLayoutable(JComponent c, Zer2DPozer pozerCorner1) {
+      LayoutableAdapterForJComponent adapter = new LayoutableAdapterForJComponent(slc, c);
+      Area2DConfigurator configurator = adapter.getLay();
+      configurator.setPozerCorner1(pozerCorner1);
+      configurator.laySiz_Preferred();
+      panel.addLayoutable(adapter);
+      return adapter;
    }
 
    public ILayoutableSwing addLayoutableCornersToCorners(JComponent c, int cornerAPozee, int cornerA, ILayoutableSwing layA, int cornerBPozee, int cornerB, ILayoutableSwing layB) {
@@ -55,6 +69,7 @@ public class ConfiguratorForSwing implements IStringable {
     * Lay Component "between" parameters.
     * 
     * at the end of start until the start of end.
+    * 
     * @param c
     * @param start
     * @param end
@@ -67,6 +82,60 @@ public class ConfiguratorForSwing implements IStringable {
 
       configurator.laySiz_Preferred();
       panel.addLayoutable(adapter);
+   }
+
+   public ILayoutable addInsideStartEndTopBot(ILayoutableSwing c, ILayoutable all) {
+      return addInsideStartEndTopBot(c, all, all, all, all);
+   }
+
+   public ILayoutable addInsideStartEndTopBot_Margin(ILayoutableSwing c, ILayoutable all, ByteObject margin) {
+      return addInsideStartEndTopBot_Margin(c, all, all, all, all, margin);
+   }
+
+   public ILayoutable addInsideStartEndTopBot_Padding(ILayoutableSwing c, ILayoutable all, ByteObject margin) {
+      return addInsideStartEndTopBot_Padding(c, all, all, all, all, margin);
+   }
+
+   public ILayoutable addInsideStartEndTopBot(ILayoutableSwing c, ILayoutable startToStart, ILayoutable endToEnd, ILayoutable topToTop, ILayoutable botToBot) {
+      Area2DConfigurator configurator = new Area2DConfigurator(slc, c.getArea());
+
+      configurator.layPoz_StartToStart_Of(startToStart);
+      configurator.layPoz_EndToEnd_Of(endToEnd);
+
+      configurator.layPoz_BotToBot_Of(botToBot);
+      configurator.layPoz_TopToTop_Of(topToTop);
+
+      panel.addLayoutableNoCheck(c);
+
+      return c;
+   }
+
+   public ILayoutable addInsideStartEndTopBot_Padding(ILayoutableSwing c, ILayoutable startToStart, ILayoutable endToEnd, ILayoutable topToTop, ILayoutable botToBot, ByteObject margin) {
+      Area2DConfigurator configurator = new Area2DConfigurator(slc, c.getArea());
+
+      configurator.layPoz_StartToStart_Of_Padding(startToStart, margin);
+      configurator.layPoz_EndToEnd_Of_Padding(endToEnd, margin);
+
+      configurator.layPoz_BotToBot_Of_Padding(botToBot, margin);
+      configurator.layPoz_TopToTop_Of_Padding(topToTop, margin);
+
+      panel.addLayoutableNoCheck(c);
+
+      return c;
+   }
+
+   public ILayoutable addInsideStartEndTopBot_Margin(ILayoutableSwing c, ILayoutable startToStart, ILayoutable endToEnd, ILayoutable topToTop, ILayoutable botToBot, ByteObject margin) {
+      Area2DConfigurator configurator = new Area2DConfigurator(slc, c.getArea());
+
+      configurator.layPoz_StartToStart_Of_Margin(startToStart, margin);
+      configurator.layPoz_EndToEnd_Of_Margin(endToEnd, margin);
+
+      configurator.layPoz_BotToBot_Of_Margin(botToBot, margin);
+      configurator.layPoz_TopToTop_Of_Margin(topToTop, margin);
+
+      panel.addLayoutableNoCheck(c);
+
+      return c;
    }
 
    public ILayoutable addLayoutableInsideStartEndTopBot(JComponent c, ILayoutable startToStart, ILayoutable endToEnd, ILayoutable topToTop, ILayoutable botToBot) {
@@ -82,6 +151,10 @@ public class ConfiguratorForSwing implements IStringable {
       panel.addLayoutable(adapter);
 
       return adapter;
+   }
+
+   public void addLayoutableOnTop(ILayoutableSwing layoutable) {
+      panel.addLayoutableNoCheck(layoutable);
    }
 
    public ILayoutable addLayoutableStartBot(JComponent c, ILayoutable start, ILayoutable end, ILayoutable botToBot) {
@@ -142,6 +215,7 @@ public class ConfiguratorForSwing implements IStringable {
 
    /**
     * Lays Component between parameters startToEnd, endTostart, topToBot, botToTop
+    * 
     * @param c
     * @param start
     * @param end
@@ -183,21 +257,6 @@ public class ConfiguratorForSwing implements IStringable {
    /**
     * 
     * @param c
-    * @param pozerCorner1
-    * @return
-    */
-   public ILayoutable addLayoutable(JComponent c, Zer2DPozer pozerCorner1) {
-      LayoutableAdapterForJComponent adapter = new LayoutableAdapterForJComponent(slc, c);
-      Area2DConfigurator configurator = adapter.getLay();
-      configurator.setPozerCorner1(pozerCorner1);
-      configurator.laySiz_Preferred();
-      panel.addLayoutable(adapter);
-      return adapter;
-   }
-
-   /**
-    * 
-    * @param c
     * @param start
     * @param end
     * @param verticalSizer
@@ -217,12 +276,14 @@ public class ConfiguratorForSwing implements IStringable {
    }
 
    /**
-    * Create a chain whose parent is the Panel, owner of this {@link ConfiguratorForSwing}.
+    * Create a chain whose parent is the Panel, owner of this
+    * {@link ConfiguratorForSwing}.
     * 
-    * The {@link LayoutableChainSwing} is itself an {@link ILayoutable} and can be used to position other {@link ILayoutable}
-    * relative to it.
+    * The {@link LayoutableChainSwing} is itself an {@link ILayoutable} and can be
+    * used to position other {@link ILayoutable} relative to it.
     * 
-    * The {@link LayoutableChainSwing} is a ghost layoutable. It does not have any visible artifacts on screen.
+    * The {@link LayoutableChainSwing} is a ghost layoutable. It does not have any
+    * visible artifacts on screen.
     * 
     * Chain size is by default set preferred.
     * 
@@ -258,14 +319,14 @@ public class ConfiguratorForSwing implements IStringable {
       ghost.setParent(panel);
 
       Area2DConfigurator lay = ghost.getLay();
-      //empty
+      // empty
       ByteObject sizerEmpty = slc.getSizerFactory().getSizerEmptyLazy();
       lay.setSizerH(sizerEmpty);
 
       lay.layPoz_StartToStart_OfParent();
       lay.layPoz_EndToEnd_Parent();
 
-      //now the X position is a ratio of the size
+      // now the X position is a ratio of the size
       ByteObject pozerTopToTop = slc.getPozerFactory().getPozerTopToTop();
       ByteObject sizerPercent = slc.getSizerFactory().getSizerRatio100Parent(percent);
       slc.getPozerFactory().setPoserWithSizer(pozerTopToTop, ITechPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
@@ -287,14 +348,14 @@ public class ConfiguratorForSwing implements IStringable {
       ghost.setParent(panel);
 
       Area2DConfigurator lay = ghost.getLay();
-      //empty
+      // empty
       ByteObject sizerEmpty = slc.getSizerFactory().getSizerEmptyLazy();
       lay.setSizerW(sizerEmpty);
 
       lay.layPoz_TopToTop_OfParent();
       lay.layPoz_BotToBot_OfParent();
 
-      //now the X position is a ratio of the size
+      // now the X position is a ratio of the size
       ByteObject pozerStartToStart = slc.getPozerFactory().getPozerStartToStart();
       ByteObject sizerPercent = slc.getSizerFactory().getSizerRatio100Parent(percent);
       slc.getPozerFactory().setPoserWithSizer(pozerStartToStart, ITechPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
@@ -332,10 +393,6 @@ public class ConfiguratorForSwing implements IStringable {
       return adapter;
    }
 
-   public void addLayoutableOnTop(ILayoutableSwing layoutable) {
-      panel.addLayoutableNoCheck(layoutable);
-   }
-
    public JPanelLayoutable getPanel() {
       return panel;
    }
@@ -360,7 +417,7 @@ public class ConfiguratorForSwing implements IStringable {
       }
    }
 
-   //#mdebug
+   // #mdebug
    public IDLog toDLog() {
       return toStringGetUCtx().toDLog();
    }
@@ -395,6 +452,6 @@ public class ConfiguratorForSwing implements IStringable {
 
    }
 
-   //#enddebug
+   // #enddebug
 
 }

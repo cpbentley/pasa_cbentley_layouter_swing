@@ -2,7 +2,7 @@ project id | pasa_cbentley_layouter_swing
 ------------ | -------------
 author | Charles-Philip Bentley
 license | ![license MIT](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=plastic)
-tags | Java
+tags | Java Layout Swing
 created | June 2020
 modified | ![GitHub last commit](https://img.shields.io/github/last-commit/cpbentley/pasa_cbentley_layouter_swing.svg?style=plastic)
 
@@ -22,9 +22,11 @@ Library for layouting Swing JComponents using The Layouter
  * Download [projectSetLayouterSwing.psf](https://github.com/cpbentley/pasa_cbentley_app_hello_ctx/blob/master/projectSetLayouterSwing.psf)
  * Start with an empty Eclipse workspace
  * Go to File | Import | Team | Team Project Set
- * Select the projectSetLayouterSwing.psf and import it
+ * Select the projectSetLayouterSwing.psf file and import it
 
 #### Github Repository Dependencies
+
+For those who want to import manually, here is the list of code contexts used by pasa_cbentley_layouter_swing,
 
 num | id | Right Click -> Copy Link Address
 ----| -- | -------------
