@@ -19,6 +19,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.engine.Zer2DSizer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
+import pasa.cbentley.layouter.src4.tech.ITechLayout;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 

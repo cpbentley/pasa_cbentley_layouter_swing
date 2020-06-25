@@ -433,6 +433,10 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
 
          this.add(component);
       }
+      
+      //TODO revalidate components by starting with those without dependencies
+      //right now it valides on demand but this may lead of stackoverflow if you have a long
+      //chain of dependencies
    }
 
    public void repaintLayoutable() {
