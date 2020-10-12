@@ -15,6 +15,8 @@ The Layouter Swing layouts!
 
 Library for layouting Swing JComponents using The Layouter
 
+<img src="res/logo_layouter_demo_64.png" alt="logo" style="width:50%;"/>
+
 # pasa_cbentley_layouter_swing
 
 ### Eclipse setup with projectSet.psf file
