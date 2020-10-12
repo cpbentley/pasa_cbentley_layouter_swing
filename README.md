@@ -15,7 +15,7 @@ The Layouter Swing layouts!
 
 Library for layouting Swing JComponents using The Layouter
 
-<img src="res/logo_layouter_demo_64.png" alt="logo" style="width:50%;"/>
+<img src="res/logo_layouter_demo_64.png" alt="logo" style="width:300;"/>
 
 # pasa_cbentley_layouter_swing
 
