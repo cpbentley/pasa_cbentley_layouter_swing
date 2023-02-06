@@ -9,13 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.layouter.src4.engine.Area2DConfigurator;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
+import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
@@ -29,20 +28,21 @@ import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
  * @author Charles Bentley
  *
  */
-public class LayoutableAdapterForJComponent implements ILayoutableSwing {
+public class LayoutableAdapterForJComponent extends ObjectSwingLayouter implements ILayoutableSwing {
 
-   protected final JComponent       component;
+   /**
+    * invariant: not null
+    */
+   protected final JComponent     component;
 
-   protected ILayoutDelegate        delegate;
+   protected ILayoutDelegate      delegate;
 
-   protected final LayEngineSwing   engine;
+   protected final LayEngineSwing engine;
 
-   protected final JComponentReal   real;
-
-   protected final SwingLayouterCtx slc;
+   protected final JComponentReal real;
 
    public LayoutableAdapterForJComponent(SwingLayouterCtx slc, JComponent component) {
-      this.slc = slc;
+      super(slc);
 
       //#debug
       slc.toStringCheckNull(component);
@@ -52,8 +52,8 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
       this.engine = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
    }
 
-   public void addDependency(ILayoutable lay, int flags) {
-      engine.addDependency(lay, flags);
+   public void setDependency(ILayoutable lay, int flags) {
+      engine.setDependency(lay, flags);
    }
 
    public Zer2DArea getArea() {
@@ -235,34 +235,19 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
    }
 
    //#mdebug
-   public IDLog toDLog() {
-      return toStringGetUCtx().toDLog();
-   }
-
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
    public void toString(Dctx dc) {
-      dc.root(this, LayoutableAdapterForJComponent.class);
+      dc.root(this, LayoutableAdapterForJComponent.class, "@line236");
       toStringPrivate(dc);
+      super.toString(dc.sup());
       dc.nlLvl(real, JComponentReal.class);
       dc.nlLvl(engine, LayEngineSwing.class);
-   }
-
-
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
    }
 
    public void toString1Line(Dctx dc) {
       dc.root1Line(this, LayoutableAdapterForJComponent.class);
       toStringPrivate(dc);
+      super.toString1Line(dc.sup1Line());
       dc.oneLine(real);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
    }
 
    public String toStringName() {
@@ -270,7 +255,10 @@ public class LayoutableAdapterForJComponent implements ILayoutableSwing {
    }
 
    private void toStringPrivate(Dctx dc) {
-
+      dc.append(' ');
+      dc.append(toStringName());
+      dc.append(' ');
    }
    //#enddebug
+
 }

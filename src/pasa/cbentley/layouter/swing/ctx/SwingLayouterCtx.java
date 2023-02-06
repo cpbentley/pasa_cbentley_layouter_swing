@@ -10,6 +10,7 @@ import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src5.ctx.C5Ctx;
+import pasa.cbentley.core.swing.stringables.SwingCoreDebug;
 import pasa.cbentley.layouter.src4.ctx.LayouterCtx;
 import pasa.cbentley.layouter.swing.engine.LayoutableAdapterForJComponent;
 import pasa.cbentley.swing.ctx.SwingCtx;
@@ -30,7 +31,7 @@ public class SwingLayouterCtx extends LayouterCtx {
    protected IConfigSwingLayouter config;
 
    public SwingLayouterCtx(BOCtx boc, SwingCtx sc) {
-      this((IConfigSwingLayouter)null, boc, sc);
+      this((IConfigSwingLayouter) null, boc, sc);
    }
 
    /**
@@ -41,7 +42,7 @@ public class SwingLayouterCtx extends LayouterCtx {
     */
    public SwingLayouterCtx(IConfigSwingLayouter config, BOCtx boc, SwingCtx sc) {
       super(boc);
-      if(config == null) {
+      if (config == null) {
          config = new ConfigSwingLayouterDefault(boc.getUCtx());
       }
       this.config = config;
@@ -50,7 +51,7 @@ public class SwingLayouterCtx extends LayouterCtx {
    }
 
    public SwingLayouterCtx(UCtx uc) {
-      this(null,new BOCtx(uc), new SwingCtx(new C5Ctx(uc)));
+      this(null, new BOCtx(uc), new SwingCtx(new C5Ctx(uc)));
    }
 
    public SwingLayouterCtx() {
@@ -63,7 +64,7 @@ public class SwingLayouterCtx extends LayouterCtx {
     * @param c5
     */
    public SwingLayouterCtx(BOCtx boc, C5Ctx c5) {
-      this(null,boc, new SwingCtx(c5));
+      this(null, boc, new SwingCtx(c5));
    }
 
    public LayoutableAdapterForJComponent createFor(JComponent c) {
@@ -76,6 +77,10 @@ public class SwingLayouterCtx extends LayouterCtx {
 
    public SwingDebug toSD() {
       return sc.toSD();
+   }
+
+   public SwingCoreDebug toSCD() {
+      return sc.getSwingCoreCtx().toSCD();
    }
 
    public SwingCtx getSwingCtx() {

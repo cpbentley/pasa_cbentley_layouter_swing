@@ -27,8 +27,8 @@ public class KeyListenerF4DebugStringable implements KeyListener, IStringable {
 
    /**
     * 
-    * @param slc
-    * @param stringable
+    * @param slc the context
+    * @param stringable the {@link IStringable} to be debugged when F4 is pressed
     */
    public KeyListenerF4DebugStringable(SwingLayouterCtx slc, IStringable stringable) {
       this.slc = slc;

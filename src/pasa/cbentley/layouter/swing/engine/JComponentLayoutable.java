@@ -51,8 +51,8 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
       engineSwing = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());
    }
 
-   public void addDependency(ILayoutable lay, int flags) {
-      engineSwing.addDependency(lay, flags);
+   public void setDependency(ILayoutable lay, int flags) {
+      engineSwing.setDependency(lay, flags);
    }
 
    public Zer2DArea getArea() {

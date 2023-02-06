@@ -55,11 +55,11 @@ public class RunLayouterDemoSwingDependencies extends RunLayouterDemoSwingAbstra
 
    private JComponentLayoutable create(ConfiguratorForSwing configurator) {
       JComponentLayoutable j3 = new JComponentLayoutable(slc);
-      ResizerListener rl = new ResizerListener(slc, j3);
-      j3.addMouseListener(rl);
-      j3.addMouseMotionListener(rl);
-      j3.addMouseWheelListener(rl);
-      j3.addKeyListener(rl);
+      ResizerListener resizeListener = new ResizerListener(slc, j3);
+      j3.addMouseListener(resizeListener);
+      j3.addMouseMotionListener(resizeListener);
+      j3.addMouseWheelListener(resizeListener);
+      j3.addKeyListener(resizeListener);
       configurator.addLayoutableOnTop(j3);
       
       return j3;
@@ -72,19 +72,31 @@ public class RunLayouterDemoSwingDependencies extends RunLayouterDemoSwingAbstra
       //add button last, so it is drawn last
       JButton buttonMove = new JButton("Move Me!");
       buttonMove.setName("buttonMoveMe");
+      //put Swing JComponent into a Layoutable object
       LayoutableAdapterForJComponent buttonMoveLay = configurator.createLayoutableFromSwingPref(buttonMove);
       buttonMoveLay.getLay().layPoz_MidXToMid_OfParent();
       buttonMoveLay.getLay().layPoz_MidYToMid_OfParent();
+     
+      ResizerListener rl = new ResizerListener(slc, buttonMoveLay);
+      buttonMove.addMouseListener(rl);
+      buttonMove.addMouseMotionListener(rl);
+      buttonMove.addMouseWheelListener(rl);
+      buttonMove.addKeyListener(rl);
+      
 
-      DragPozerListener listener = new DragPozerListener(slc, buttonMoveLay, panel);
-
+      //add F4 key listener for debugging the panel
       KeyListenerF4DebugStringable keyLis = new KeyListenerF4DebugStringable(slc, panel);
-
       buttonMove.addKeyListener(keyLis);
+
+      //enable draggings the button with the default left click button
+      DragPozerListener listener = new DragPozerListener(slc, buttonMoveLay, panel);
       buttonMove.addMouseListener(listener);
       buttonMove.addMouseMotionListener(listener);
       buttonMove.addMouseWheelListener(listener);
 
+      
+      /////////////////////////////////////////////
+      
       JComponentLayoutable j1 = create(configurator);
       j1.setName("j1");
       j1.setBackground(new Color(40, 210, 100, 128));
@@ -92,30 +104,44 @@ public class RunLayouterDemoSwingDependencies extends RunLayouterDemoSwingAbstra
       j1.getLay().layPoz_TopToBot_Of(buttonMoveLay);
       j1.getLay().layPoz_StartToEnd_Of(buttonMoveLay);
 
-      JComponentLayoutable j2 = create(configurator);
-      j2.setName("j2");
-      j2.setBackground(new Color(240, 210, 100, 128));
-      Area2DConfigurator lay = j2.getLay();
-      lay.setSizePixel(40, 100);
-      lay.layPoz_BotToTop_Of(j1);
-      lay.layPoz_EndToEnd_Of(j1);
-
-      JComponentLayoutable j3 = create(configurator);
-      j3.setName("j3");
-      j3.setBackground(new Color(240, 110, 40, 128));
-      lay = j3.getLay();
-      lay.setSizePixel(180, 15);
-      lay.layPoz_TopToTop_Of(j2);
-      lay.layPoz_EndToStart_Of(j2);
-
-      JComponentLayoutable j4 = create(configurator);
-      j4.setName("j4");
-      j4.setBackground(new Color(240, 110, 240, 128));
-      lay = j4.getLay();
-      lay.setSizePixel(30, 150);
-      lay.layPoz_TopToBot_Of(j3);
-      lay.layPoz_StartToStart_Of(j3);
-
+//      JComponentLayoutable j2 = create(configurator);
+//      j2.setName("j2");
+//      j2.setBackground(new Color(240, 210, 100, 128));
+//      Area2DConfigurator lay = j2.getLay();
+//      lay.setSizePixel(40, 100);
+//      lay.layPoz_BotToTop_Of(j1);
+//      lay.layPoz_EndToEnd_Of(j1);
+//
+//      JComponentLayoutable j3 = create(configurator);
+//      j3.setName("j3");
+//      j3.setBackground(new Color(240, 110, 40, 128));
+//      lay = j3.getLay();
+//      lay.setSizePixel(180, 15);
+//      lay.layPoz_TopToTop_Of(j2);
+//      lay.layPoz_EndToStart_Of(j2);
+//
+//      JComponentLayoutable j4 = create(configurator);
+//      j4.setName("j4");
+//      j4.setBackground(new Color(240, 110, 240, 128));
+//      lay = j4.getLay();
+//      lay.setSizePixel(30, 150);
+//      lay.layPoz_TopToBot_Of(j3);
+//      lay.layPoz_StartToStart_Of(j3);
+//
+//      
+//      JButton buttonClick = new JButton("Click Me!");
+//      buttonClick.setName("buttonClickMe");
+//      LayoutableAdapterForJComponent buttonClickLay = configurator.createLayoutableFromSwingPref(buttonClick);
+//      lay = buttonClickLay.getLay();
+//      lay.layPoz_BotToBot_Of(j4);
+//      lay.layPoz_StartToEnd_Of(j4);
+//      
+//      rl = new ResizerListener(slc, buttonClickLay);
+//      buttonClick.addMouseListener(rl);
+//      buttonClick.addMouseMotionListener(rl);
+//      buttonClick.addMouseWheelListener(rl);
+//      buttonClick.addKeyListener(rl);
+      
       //add listener for computations
       slc.toStringSetDebugBreaks(new LayoutWillListenerAdapter() {
 

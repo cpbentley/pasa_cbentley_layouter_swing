@@ -78,8 +78,8 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
       return configurator;
    }
 
-   public void addDependency(ILayoutable lay, int flags) {
-      compLay.addDependency(lay, flags);
+   public void setDependency(ILayoutable lay, int flags) {
+      compLay.setDependency(lay, flags);
    }
 
    /**

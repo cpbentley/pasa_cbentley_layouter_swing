@@ -25,6 +25,30 @@ import pasa.cbentley.layouter.src4.tech.ITechPozer;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
+/**
+ * Helps the layout of a {@link JPanelLayoutable}
+ * 
+ * Methods are provided to add components on the panel using various layout constraints
+ * 
+ * {@link ConfiguratorForSwing#addLayoutable(JComponent, Zer2DPozer)}
+ * 
+ * <br>
+ * <p>
+ * Create chains
+ * <li> {@link ConfiguratorForSwing#createChainHorizontal()}
+ * <li> {@link ConfiguratorForSwing#createChainVertical()}
+ *  </p>
+ * <br>
+ * <br>
+ * <p>
+ * Create Ghosts
+ * <li> {@link ConfiguratorForSwing#createGhostLineHorizontal(int)}
+ * <li> {@link ConfiguratorForSwing#createGhostLineVertical(int)}
+ * </p>
+ * 
+ * @author Charles Bentley
+ *
+ */
 public class ConfiguratorForSwing implements IStringable {
 
    protected IntToObjects           extras;
@@ -368,17 +392,14 @@ public class ConfiguratorForSwing implements IStringable {
    }
 
    /**
-    * 
-    * @param c
+    * Create a {@link LayoutableAdapterForJComponent} with preferred size for size constraints.
+    * @param c {@link JComponent} to be wrapped.
     * @return
     */
    public LayoutableAdapterForJComponent createLayoutableFromSwingPref(JComponent c) {
       LayoutableAdapterForJComponent adapter = new LayoutableAdapterForJComponent(slc, c);
-
       adapter.getLay().laySiz_Preferred();
-
       panel.addLayoutableNoCheck(adapter);
-
       return adapter;
    }
 

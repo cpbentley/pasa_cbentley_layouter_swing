@@ -13,19 +13,19 @@ import javax.swing.JComponent;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
+import pasa.cbentley.layouter.src4.ctx.ObjectLayouter;
 import pasa.cbentley.layouter.src4.interfaces.I2DReal;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechSizer;
+import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 
-public class JComponentReal implements I2DReal {
+public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
 
-   protected final JComponent       component;
-
-   protected final SwingLayouterCtx slc;
+   protected final JComponent component;
 
    public JComponentReal(SwingLayouterCtx slc, JComponent component) {
-      this.slc = slc;
+      super(slc);
       this.component = component;
 
       slc.toStringCheckNull(component);
@@ -139,37 +139,25 @@ public class JComponentReal implements I2DReal {
    }
 
    //#mdebug
-   public IDLog toDLog() {
-      return toStringGetUCtx().toDLog();
-   }
-
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
    public void toString(Dctx dc) {
-      dc.root(this, JComponentReal.class, 91);
+      dc.root(this, JComponentReal.class, "@line5");
       toStringPrivate(dc);
-      dc.appendVarWithSpace("->", component.getClass().getName());
+      super.toString(dc.sup());
       dc.nl();
-      slc.getSwingCtx().toSD().dFind(component, dc);
-   }
-
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
+      dc.appendVarWithSpace("ClassName", component.getClass().getName());
+      dc.nl();
+      slc.toSCD().dFind(component, dc);
    }
 
    private void toStringPrivate(Dctx dc) {
+
    }
 
    public void toString1Line(Dctx dc) {
       dc.root1Line(this, JComponentReal.class);
       toStringPrivate(dc);
+      super.toString1Line(dc.sup1Line());
       slc.getSwingCtx().toSD().dFind1(component, dc);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
    }
 
    //#enddebug
