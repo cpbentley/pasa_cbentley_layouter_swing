@@ -27,6 +27,14 @@ import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
 import pasa.cbentley.layouter.swing.engine.KeyListenerF4DebugStringable;
 import pasa.cbentley.layouter.swing.engine.LayoutableAdapterForJComponent;
 
+/**
+ * Use of {@link ILayoutDelegate} for custom code sizes.
+ * Those sizes depend on parameters out of the static scope available to the engine.
+ * 
+ * 
+ * @author Charles Bentley
+ *
+ */
 public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
 
    public static void main(String[] args) {
@@ -69,53 +77,40 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
 
       ILayoutDelegate delegate = new LayoutDelegateAdapter(slc) {
 
+         final int maxRandom = 5;
          public int getDelegateSizeHeight(ByteObject sizer, ILayoutable layoutable) {
-            if (layoutable == panelOrange) {
-               int h = slc.getUCtx().getRandom().nextInt(300) + 10;
-               return h;
-            } else if (layoutable == panelGreen) {
-               int currentH = layoutable.getSizeDrawnHeight();
-               int multi = 1;
-               if (currentH > 300) {
-                  multi = -1;
-               }
-               int h = currentH + (multi * rnd.nextInt(300)) + 10;
-               return h;
-            } else {
-               return rnd.nextInt(100) + 20;
+            Random r = slc.getUCtx().getRandom();
+            int curH = layoutable.getSizeDrawnHeight();
+            int plusOrMinus = r.nextInt(2);
+            int value = r.nextInt(maxRandom);
+            int h = plusOrMinus == 0 ? curH + value : curH - value;
+            if (h < 10) {
+               h = 10;
             }
+            int max = panel.getHeight() / 2;
+            if (h > max) {
+               h = max;
+            }
+            return h;
          }
 
          public int getDelegateSizeWidth(ByteObject sizer, ILayoutable layoutable) {
-            if (layoutable == panelOrange) {
-               int h = rnd.nextInt(300) + 10;
-               return h;
-            } else if (layoutable == panelGreen) {
-               int currentWidth = layoutable.getSizeDrawnWidth();
-               int multi = 1;
-               if (currentWidth > 300) {
-                  multi = -1;
-               }
-               int w = currentWidth + (multi * rnd.nextInt(300)) + 10;
-               return w;
-            } else if (layoutable == panelRed) {
-               int currentWidth = layoutable.getSizeDrawnWidth();
-               int multi = 1;
-               if (currentWidth > 300) {
-                  multi = -1;
-               }
-               if (currentWidth < 50) {
-                  currentWidth += 50;
-               }
-               int w = currentWidth + (multi * rnd.nextInt(20));
-               return w;
-            } else {
-               return rnd.nextInt(100) + 20;
+            Random r = slc.getUCtx().getRandom();
+            int curH = layoutable.getSizeDrawnWidth();
+            int plusOrMinus = r.nextInt(2);
+            int value = r.nextInt(maxRandom);
+            int h = plusOrMinus == 0 ? curH + value : curH - value;
+            if (h < 10) {
+               h = 10;
             }
+            int max = panel.getWidth() / 2;
+            if (h > max) {
+               h = max;
+            }
+            return h;
          }
       };
 
-      
       createOrange(panel, delegate);
 
       createBlue(panel, delegate);
@@ -123,10 +118,9 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
       createGreen(panel, delegate);
 
       createRed(panel, delegate);
-      //createYellow(panel);
-      //createWhite(panel);
-
       
+      createWhite(panel, delegate);
+
       //add button last, so it is drawn last
       JButton buttonMove = new JButton("Move Me!");
       buttonMove.setName("buttonMoveMe");
@@ -143,8 +137,6 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
       buttonMove.addMouseMotionListener(listener);
       buttonMove.addMouseWheelListener(listener);
 
-      
-      
       //add listener for computations
       slc.toStringSetDebugBreaks(new LayoutWillListenerAdapter() {
 
@@ -243,18 +235,21 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
       lay.setSizerW(sizer);
    }
 
-   private void createWhite(JPanelLayoutable root) {
+   private void createWhite(JPanelLayoutable root, ILayoutDelegate delegate) {
       JPanel panel = new JPanel();
       panel.setName("panelWhite");
       panel.setBackground(Color.WHITE);
       panelWhite = root.addLayoutable(panel);
+
+      Area2DConfigurator lay = panelWhite.getLay();
+
+      lay.layPoz_MidXToMid_OfParent();
+      lay.layPoz_MidYToMid_OfParent();
+
+      ByteObject sizer = slc.getSizerFactory().getSizerDelegate(delegate);
+      lay.setSizerH(sizer);
+      lay.setSizerW(sizer);
    }
 
-   private void createYellow(JPanelLayoutable root) {
-      JPanel panel = new JPanel();
-      panel.setName("panelYellow");
-      panel.setBackground(Color.YELLOW);
-      panelYellow = root.addLayoutable(panel);
-   }
 
 }
