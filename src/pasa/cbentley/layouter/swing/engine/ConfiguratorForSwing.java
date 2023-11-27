@@ -177,6 +177,10 @@ public class ConfiguratorForSwing implements IStringable {
       return adapter;
    }
 
+   /**
+    * Simply puts the {@link ILayoutableSwing} on the {@link JPanel} stack. No Checks are made
+    * @param layoutable
+    */
    public void addLayoutableOnTop(ILayoutableSwing layoutable) {
       panel.addLayoutableNoCheck(layoutable);
    }

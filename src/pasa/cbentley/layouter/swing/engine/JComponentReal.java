@@ -20,6 +20,14 @@ import pasa.cbentley.layouter.src4.tech.ITechSizer;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 
+/**
+ * Encapsulate the {@link JComponent} and implements {@link I2DReal} interface
+ * 
+ * TODO parent 2dreal ?
+ * 
+ * @author Charles Bentley
+ *
+ */
 public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
 
    protected final JComponent component;
@@ -31,12 +39,18 @@ public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
       slc.toStringCheckNull(component);
    }
 
+   /**
+    * {@link I2DReal#getFontHeight()}
+    */
    public int getFontHeight() {
       Font font = component.getFont();
       FontMetrics fontMetrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
       return fontMetrics.getHeight();
    }
 
+   /**
+    * {@link I2DReal#getFontWidth()}
+    */
    public int getFontWidth() {
       Font font = component.getFont();
       FontMetrics fontMetrics = Toolkit.getDefaultToolkit().getFontMetrics(font);

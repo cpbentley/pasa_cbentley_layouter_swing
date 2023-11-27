@@ -18,6 +18,12 @@ import pasa.cbentley.layouter.src4.tech.ITechLayout;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
+/**
+ * Subclass of {@link LayEngineReal} with Swing related services
+ * 
+ * @author Charles Bentley
+ *
+ */
 public class LayEngineSwing extends LayEngineReal implements ITechLayout {
 
    private ILayoutableSwing compLay;
