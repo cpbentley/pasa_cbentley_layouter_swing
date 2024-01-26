@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
-import pasa.cbentley.layouter.src4.tech.ITechPozer;
+import pasa.cbentley.layouter.src4.tech.IBOPozer;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
@@ -75,13 +75,13 @@ public class DragPozerListener implements MouseListener, MouseMotionListener, Mo
 
       //modify area
       ByteObject pozerXStart = areaPressed.getPozerXStart();
-      int pressedLayX = pozerXStart.get4(ITechPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4);
+      int pressedLayX = pozerXStart.get4(IBOPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4);
 
-      areaDragged.getPozerXStart().set4(ITechPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4, pressedLayX - vectorX);
+      areaDragged.getPozerXStart().set4(IBOPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4, pressedLayX - vectorX);
 
       ByteObject pozerYTop = areaPressed.getPozerYTop();
-      int pressedLayY = pozerYTop.get4(ITechPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4);
-      areaDragged.getPozerYTop().set4(ITechPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4, pressedLayY - vectorY);
+      int pressedLayY = pozerYTop.get4(IBOPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4);
+      areaDragged.getPozerYTop().set4(IBOPozer.POS_OFFSET_03_ANCHOR_ETALON_POINT_VALUE4, pressedLayY - vectorY);
 
       layoutable.setArea(areaDragged);
 

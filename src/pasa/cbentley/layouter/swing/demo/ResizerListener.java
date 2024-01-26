@@ -12,7 +12,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.src4.tech.ITechSizer;
+import pasa.cbentley.layouter.src4.tech.IBOSizer;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.engine.JComponentLayoutable;
@@ -75,9 +75,9 @@ public class ResizerListener extends ObjectSwingLayouter implements MouseMotionL
       } else {
          //down
          area.incrementSizerH(1);
-         int v = area.getSizerH().get2(ITechSizer.SIZER_OFFSET_05_VALUE2);
+         int v = area.getSizerH().get2(IBOSizer.SIZER_OFFSET_05_VALUE2);
          v -= 1;
-         area.getSizerH().set2(ITechSizer.SIZER_OFFSET_05_VALUE2, v);
+         area.getSizerH().set2(IBOSizer.SIZER_OFFSET_05_VALUE2, v);
       }
       c.layoutInvalidateSize();
 

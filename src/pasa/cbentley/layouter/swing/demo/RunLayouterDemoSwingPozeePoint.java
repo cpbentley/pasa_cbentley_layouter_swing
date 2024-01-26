@@ -15,7 +15,7 @@ import pasa.cbentley.layouter.src4.engine.Area2DConfigurator;
 import pasa.cbentley.layouter.src4.engine.LayoutWillListenerAdapter;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.src4.tech.ITechSizer;
+import pasa.cbentley.layouter.src4.tech.IBOSizer;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
 import pasa.cbentley.layouter.swing.engine.LayoutableAdapterForJComponent;
 

@@ -13,7 +13,7 @@ import javax.swing.JComponent;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
-import pasa.cbentley.layouter.src4.ctx.ObjectLayouter;
+import pasa.cbentley.layouter.src4.ctx.ObjectLC;
 import pasa.cbentley.layouter.src4.interfaces.I2DReal;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechSizer;

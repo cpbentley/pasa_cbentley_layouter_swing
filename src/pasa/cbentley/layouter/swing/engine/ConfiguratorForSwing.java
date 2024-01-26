@@ -21,7 +21,7 @@ import pasa.cbentley.layouter.src4.engine.LayoutableGhost;
 import pasa.cbentley.layouter.src4.engine.Zer2DPozer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutWillListener;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
-import pasa.cbentley.layouter.src4.tech.ITechPozer;
+import pasa.cbentley.layouter.src4.tech.IBOPozer;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
@@ -357,7 +357,7 @@ public class ConfiguratorForSwing implements IStringable {
       // now the X position is a ratio of the size
       ByteObject pozerTopToTop = slc.getPozerFactory().getPozerTopToTop();
       ByteObject sizerPercent = slc.getSizerFactory().getSizerRatio100Parent(percent);
-      slc.getPozerFactory().setPoserWithSizer(pozerTopToTop, ITechPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
+      slc.getPozerFactory().setPoserWithSizer(pozerTopToTop, IBOPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
 
       lay.setPozerYTop(pozerTopToTop);
 
@@ -386,7 +386,7 @@ public class ConfiguratorForSwing implements IStringable {
       // now the X position is a ratio of the size
       ByteObject pozerStartToStart = slc.getPozerFactory().getPozerStartToStart();
       ByteObject sizerPercent = slc.getSizerFactory().getSizerRatio100Parent(percent);
-      slc.getPozerFactory().setPoserWithSizer(pozerStartToStart, ITechPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
+      slc.getPozerFactory().setPoserWithSizer(pozerStartToStart, IBOPozer.POS_FUN_0_TOWARDS_CENTER, sizerPercent);
 
       lay.setPozerXStart(pozerStartToStart);
 
