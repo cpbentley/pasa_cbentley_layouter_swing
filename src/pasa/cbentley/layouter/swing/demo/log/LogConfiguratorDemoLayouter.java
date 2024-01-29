@@ -19,7 +19,7 @@ public class LogConfiguratorDemoLayouter implements ILogConfigurator {
       log.setFlagTag(ITechTags.FLAG_18_PRINT_MEMORY, false);
       log.setFlagTag(ITechTags.FLAG_01_PRINT_ALWAYS, true);
       log.setFlagTag(ITechTags.FLAG_09_PRINT_FLOW, true);
-      log.setFlagTag(ITechTags.FLAG_25_PRINT_NULL, true);
+      log.setFlagTag(ITechTags.FLAG_02_PRINT_NULL, true);
       log.setFlagTag(ITechTags.FLAG_20_PRINT_INIT, true);
 
       log.setClassNegative(SwingCtx.class, false);
