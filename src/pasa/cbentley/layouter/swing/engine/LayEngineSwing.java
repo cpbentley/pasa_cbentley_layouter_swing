@@ -9,7 +9,7 @@ import java.awt.Container;
 import javax.swing.JComponent;
 
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.layouter.src4.engine.LayEngineReal;
+import pasa.cbentley.layouter.src4.engine.LayouterEngineReal;
 import pasa.cbentley.layouter.src4.engine.LayoutableRect;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.interfaces.I2DReal;
@@ -19,12 +19,12 @@ import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
- * Subclass of {@link LayEngineReal} with Swing related services
+ * Subclass of {@link LayouterEngineReal} with Swing related services
  * 
  * @author Charles Bentley
  *
  */
-public class LayEngineSwing extends LayEngineReal implements ITechLayout {
+public class LayEngineSwing extends LayouterEngineReal implements ITechLayout {
 
    private ILayoutableSwing compLay;
 

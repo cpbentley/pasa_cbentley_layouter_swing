@@ -44,10 +44,10 @@ public class RunLayouterDemoSwingMoveButton extends RunLayouterDemoSwingAbstract
 
       ILayoutable parent = configurator.getPanel();
 
-      ByteObject sizerW = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 30);
-      ByteObject sizerH = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 40);
+      ByteObject sizerW = slc.getSizerFactory().getSizerRatio100(30, ITechLayout.ETALON_4_PARENT);
+      ByteObject sizerH = slc.getSizerFactory().getSizerRatio100(40, ITechLayout.ETALON_4_PARENT);
 
-      ByteObject sizerRatio40 = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 40);
+      ByteObject sizerRatio40 = slc.getSizerFactory().getSizerRatio100(40, ITechLayout.ETALON_4_PARENT);
 
       //TODO etalon is the opposite
       ByteObject sizerRatio16_9 = slc.getSizerFactory().getSizerRatioFraction(16, 9);
@@ -83,10 +83,10 @@ public class RunLayouterDemoSwingMoveButton extends RunLayouterDemoSwingAbstract
 
       Zer2DPozer pozerEndToCenterTopToTopParent = new Zer2DPozer(slc, pozerEndCenter, pozerTopToTop);
 
-      ByteObject sizer40 = slc.getSizerFactory().getSizerPix(40);
-      ByteObject sizer60 = slc.getSizerFactory().getSizerPix(60);
+      ByteObject sizer40 = slc.getSizerFactory().getSizerPixel(40);
+      ByteObject sizer60 = slc.getSizerFactory().getSizerPixel(60);
 
-      ByteObject sizerRatio50 = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 50);
+      ByteObject sizerRatio50 = slc.getSizerFactory().getSizerRatio100(50, ITechLayout.ETALON_4_PARENT);
 
       JComponentLayoutable green = new JComponentLayoutable(slc);
       green.setName("green");

@@ -16,7 +16,7 @@ import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.layouter.src4.ctx.ObjectLC;
 import pasa.cbentley.layouter.src4.interfaces.I2DReal;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
-import pasa.cbentley.layouter.src4.tech.ITechSizer;
+import pasa.cbentley.layouter.src4.tech.ITechLayout;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 
@@ -77,19 +77,19 @@ public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
     */
    public int getSizePropertyValueH(int property) {
       switch (property) {
-         case ITechSizer.SIZER_PROP_00_DRAWN:
+         case ITechLayout.SIZER_PROP_00_DRAWN:
             return getRealHeight();
-         case ITechSizer.SIZER_PROP_01_PREFERRED:
+         case ITechLayout.SIZER_PROP_01_PREFERRED:
             return getRealPrefHeight();
-         case ITechSizer.SIZER_PROP_03_FONT:
+         case ITechLayout.SIZER_PROP_03_FONT:
             return getFontHeight();
-         case ITechSizer.SIZER_PROP_05_CONTENT:
+         case ITechLayout.SIZER_PROP_05_CONTENT:
             return getRealHeight();
-         case ITechSizer.SIZER_PROP_06_CONTENT_PAD:
+         case ITechLayout.SIZER_PROP_06_CONTENT_PAD:
             return getRealHeight();
-         case ITechSizer.SIZER_PROP_07_CONTENT_PAD_BORDER:
+         case ITechLayout.SIZER_PROP_07_CONTENT_PAD_BORDER:
             return getRealHeight();
-         case ITechSizer.SIZER_PROP_10_PAD:
+         case ITechLayout.SIZER_PROP_10_PAD:
             return getRealHeight();
          default:
             break;
@@ -104,19 +104,19 @@ public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
     */
    public int getSizePropertyValueW(int property) {
       switch (property) {
-         case ITechSizer.SIZER_PROP_00_DRAWN:
+         case ITechLayout.SIZER_PROP_00_DRAWN:
             return getRealWidth();
-         case ITechSizer.SIZER_PROP_01_PREFERRED:
+         case ITechLayout.SIZER_PROP_01_PREFERRED:
             return getRealPrefWidth();
-         case ITechSizer.SIZER_PROP_03_FONT:
+         case ITechLayout.SIZER_PROP_03_FONT:
             return getFontWidth();
-         case ITechSizer.SIZER_PROP_05_CONTENT:
+         case ITechLayout.SIZER_PROP_05_CONTENT:
             return getRealWidth();
-         case ITechSizer.SIZER_PROP_06_CONTENT_PAD:
+         case ITechLayout.SIZER_PROP_06_CONTENT_PAD:
             return getRealWidth();
-         case ITechSizer.SIZER_PROP_07_CONTENT_PAD_BORDER:
+         case ITechLayout.SIZER_PROP_07_CONTENT_PAD_BORDER:
             return getRealWidth();
-         case ITechSizer.SIZER_PROP_10_PAD:
+         case ITechLayout.SIZER_PROP_10_PAD:
             return getRealWidth();
          default:
             break;

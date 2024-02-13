@@ -75,9 +75,9 @@ public class ResizerListener extends ObjectSwingLayouter implements MouseMotionL
       } else {
          //down
          area.incrementSizerH(1);
-         int v = area.getSizerH().get2(IBOSizer.SIZER_OFFSET_05_VALUE2);
+         int v = area.getSizerH().get2(IBOSizer.SIZER_OFFSET_08_VALUE2);
          v -= 1;
-         area.getSizerH().set2(IBOSizer.SIZER_OFFSET_05_VALUE2, v);
+         area.getSizerH().set2(IBOSizer.SIZER_OFFSET_08_VALUE2, v);
       }
       c.layoutInvalidateSize();
 

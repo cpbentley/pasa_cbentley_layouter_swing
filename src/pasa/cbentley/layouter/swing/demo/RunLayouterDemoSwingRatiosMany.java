@@ -42,12 +42,12 @@ public class RunLayouterDemoSwingRatiosMany extends RunLayouterDemoSwingAbstract
 
       ILayoutable parent = configurator.getPanel();
 
-      ByteObject sizer45PercentParent = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 45);
-      ByteObject sizer40PercentParent = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 40);
-      ByteObject sizer30PercentParent = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 30);
+      ByteObject sizer45PercentParent = slc.getSizerFactory().getSizerRatio100(45, ITechLayout.ETALON_4_PARENT);
+      ByteObject sizer40PercentParent = slc.getSizerFactory().getSizerRatio100(40, ITechLayout.ETALON_4_PARENT);
+      ByteObject sizer30PercentParent = slc.getSizerFactory().getSizerRatio100(30, ITechLayout.ETALON_4_PARENT);
 
-      ByteObject sizer10PercentParent = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 10);
-      ByteObject sizer20PercentParent = slc.getSizerFactory().getSizerRatio100(ITechLayout.ETALON_4_PARENT, 10);
+      ByteObject sizer10PercentParent = slc.getSizerFactory().getSizerRatio100(10, ITechLayout.ETALON_4_PARENT);
+      ByteObject sizer20PercentParent = slc.getSizerFactory().getSizerRatio100(10, ITechLayout.ETALON_4_PARENT);
 
       
       PozerFactory pozerFac = slc.getFactoryPozer();

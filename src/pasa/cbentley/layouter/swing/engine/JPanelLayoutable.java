@@ -25,7 +25,6 @@ import pasa.cbentley.layouter.src4.engine.Zer2DPozer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.src4.tech.ITechSizer;
 import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
@@ -286,11 +285,11 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
 
    public int getSizePropertyValueW(int property) {
       switch (property) {
-         case ITechSizer.SIZER_PROP_00_DRAWN:
+         case ITechLayout.SIZER_PROP_00_DRAWN:
             return getSizeDrawnWidth();
-         case ITechSizer.SIZER_PROP_01_PREFERRED:
+         case ITechLayout.SIZER_PROP_01_PREFERRED:
             return getSizePreferredWidth();
-         case ITechSizer.SIZER_PROP_03_FONT:
+         case ITechLayout.SIZER_PROP_03_FONT:
             return getSizeFontWidth();
          default:
             break;
@@ -300,11 +299,11 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
 
    public int getSizePropertyValueH(int property) {
       switch (property) {
-         case ITechSizer.SIZER_PROP_00_DRAWN:
+         case ITechLayout.SIZER_PROP_00_DRAWN:
             return getSizeDrawnHeight();
-         case ITechSizer.SIZER_PROP_01_PREFERRED:
+         case ITechLayout.SIZER_PROP_01_PREFERRED:
             return getSizePreferredHeight();
-         case ITechSizer.SIZER_PROP_03_FONT:
+         case ITechLayout.SIZER_PROP_03_FONT:
             return getSizeFontHeight();
          default:
             break;
