@@ -343,7 +343,7 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
    }
 
    public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
+      return slc.getUC();
    }
 
    public String toStringName() {

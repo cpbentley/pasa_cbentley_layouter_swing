@@ -122,7 +122,7 @@ public class LayoutManagerForLayouter implements LayoutManager, IStringable {
    }
 
    public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
+      return slc.getUC();
    }
 
    //#enddebug

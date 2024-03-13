@@ -43,7 +43,7 @@ public class SwingLayouterCtx extends LayouterCtx {
    public SwingLayouterCtx(IConfigSwingLayouter config, BOCtx boc, SwingCtx sc) {
       super(boc);
       if (config == null) {
-         config = new ConfigSwingLayouterDefault(boc.getUCtx());
+         config = new ConfigSwingLayouterDefault(boc.getUC());
       }
       this.config = config;
       this.c5 = sc.getC5();

@@ -68,7 +68,7 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
 
       constructHelpers();
 
-      rnd = slc.getUCtx().getRandom();
+      rnd = slc.getUC().getRandom();
    }
 
    public void buildDemo(JPanelLayoutable panel) {
@@ -79,7 +79,7 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
 
          final int maxRandom = 5;
          public int getDelegateSizeHeight(ByteObject sizer, ILayoutable layoutable) {
-            Random r = slc.getUCtx().getRandom();
+            Random r = slc.getUC().getRandom();
             int curH = layoutable.getSizeDrawnHeight();
             int plusOrMinus = r.nextInt(2);
             int value = r.nextInt(maxRandom);
@@ -95,7 +95,7 @@ public class RunLayouterDemoSwingDelegate extends RunLayouterDemoSwingAbstract {
          }
 
          public int getDelegateSizeWidth(ByteObject sizer, ILayoutable layoutable) {
-            Random r = slc.getUCtx().getRandom();
+            Random r = slc.getUC().getRandom();
             int curH = layoutable.getSizeDrawnWidth();
             int plusOrMinus = r.nextInt(2);
             int value = r.nextInt(maxRandom);

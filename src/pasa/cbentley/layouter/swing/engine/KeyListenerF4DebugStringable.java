@@ -81,7 +81,7 @@ public class KeyListenerF4DebugStringable implements KeyListener, IStringable {
    }
 
    public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
+      return slc.getUC();
    }
 
    //#enddebug

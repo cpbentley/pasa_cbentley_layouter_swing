@@ -482,7 +482,7 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
    }
 
    public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
+      return slc.getUC();
    }
 
    public String toStringName() {

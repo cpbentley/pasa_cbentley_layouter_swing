@@ -60,7 +60,7 @@ public class ConfiguratorForSwing implements IStringable {
    public ConfiguratorForSwing(SwingLayouterCtx slc, JPanelLayoutable panel) {
       this.slc = slc;
       this.panel = panel;
-      extras = new IntToObjects(slc.getUCtx());
+      extras = new IntToObjects(slc.getUC());
 
    }
 
@@ -470,7 +470,7 @@ public class ConfiguratorForSwing implements IStringable {
    }
 
    public UCtx toStringGetUCtx() {
-      return slc.getUCtx();
+      return slc.getUC();
    }
 
    private void toStringPrivate(Dctx dc) {
