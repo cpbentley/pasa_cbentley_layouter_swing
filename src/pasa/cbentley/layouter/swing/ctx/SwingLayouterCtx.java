@@ -80,7 +80,7 @@ public class SwingLayouterCtx extends LayouterCtx {
    }
 
    public SwingCoreDebug toSCD() {
-      return sc.getSwingCoreCtx().toSCD();
+      return sc.toSCD();
    }
 
    public SwingCtx getSwingCtx() {
