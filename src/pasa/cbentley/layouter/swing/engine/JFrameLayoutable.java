@@ -6,7 +6,7 @@ package pasa.cbentley.layouter.swing.engine;
 
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.swing.window.CBentleyFrame;
 
 /**
@@ -26,9 +26,9 @@ public class JFrameLayoutable extends CBentleyFrame implements IStringable {
 
    protected JPanelLayoutable       panel;
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
-   public JFrameLayoutable(SwingLayouterCtx slc) {
+   public JFrameLayoutable(LayouterSwingCtx slc) {
       super(slc.getSwingCtx());
       this.slc = slc;
       panel = new JPanelLayoutable(slc);

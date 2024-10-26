@@ -8,10 +8,14 @@ import pasa.cbentley.core.src4.ctx.ConfigAbstract;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.swing.ctx.IConfigSwing;
 
-public class ConfigSwingLayouterDefault extends ConfigAbstract implements IConfigSwingLayouter {
+public class ConfigSwingLayouterDefault extends ConfigAbstract implements IConfigLayouterSwing {
 
    public ConfigSwingLayouterDefault(UCtx uc) {
       super(uc);
+   }
+
+   public boolean isSizePrefferedDefault() {
+      return false;
    }
 
 }

@@ -14,7 +14,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
 import pasa.cbentley.layouter.src4.tech.IBOSizer;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.engine.JComponentLayoutable;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
@@ -34,7 +34,7 @@ public class ResizerListener extends ObjectSwingLayouter implements MouseMotionL
     * @param slc
     * @param c The {@link JComponentLayoutable} that will be resized using the mouse
     */
-   public ResizerListener(SwingLayouterCtx slc, ILayoutableSwing c) {
+   public ResizerListener(LayouterSwingCtx slc, ILayoutableSwing c) {
       super(slc);
       this.c = c;
 

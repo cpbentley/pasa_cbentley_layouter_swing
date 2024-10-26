@@ -20,7 +20,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DSizer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -43,9 +43,9 @@ public class JComponentLayoutable extends JComponent implements ILayoutableSwing
 
    protected final JComponentReal   real;
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
-   public JComponentLayoutable(SwingLayouterCtx slc) {
+   public JComponentLayoutable(LayouterSwingCtx slc) {
       this.slc = slc;
       this.real = new JComponentReal(slc, this);
       engineSwing = new LayEngineSwing(slc, this, real, slc.getNewLayoutID());

@@ -15,7 +15,7 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 /**
  * {@link LayoutManager} for a {@link JPanelLayoutable}
@@ -25,9 +25,9 @@ import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
  */
 public class LayoutManagerForLayouter implements LayoutManager, IStringable {
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
-   public LayoutManagerForLayouter(SwingLayouterCtx slc) {
+   public LayoutManagerForLayouter(LayouterSwingCtx slc) {
       this.slc = slc;
    }
 

@@ -7,7 +7,7 @@ package pasa.cbentley.layouter.swing.demo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 public class LayouterDemoButtonAction implements ActionListener {
 
@@ -15,11 +15,11 @@ public class LayouterDemoButtonAction implements ActionListener {
 
    protected final LayouterDemoFactory fac;
 
-   protected final SwingLayouterCtx    slc;
+   protected final LayouterSwingCtx    slc;
 
    private String                      text;
 
-   public LayouterDemoButtonAction(SwingLayouterCtx slc, LayouterDemoFactory fac, Class c) {
+   public LayouterDemoButtonAction(LayouterSwingCtx slc, LayouterDemoFactory fac, Class c) {
       this.slc = slc;
       this.fac = fac;
       this.c = c;

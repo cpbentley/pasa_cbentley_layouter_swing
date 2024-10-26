@@ -11,7 +11,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 /**
  * Listens for some keys to debug the {@link IStringable}
@@ -21,7 +21,7 @@ import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
  */
 public class KeyListenerF4DebugStringable implements KeyListener, IStringable {
 
-   private SwingLayouterCtx slc;
+   private LayouterSwingCtx slc;
 
    private IStringable      stringable;
 
@@ -30,7 +30,7 @@ public class KeyListenerF4DebugStringable implements KeyListener, IStringable {
     * @param slc the context
     * @param stringable the {@link IStringable} to be debugged when F4 is pressed
     */
-   public KeyListenerF4DebugStringable(SwingLayouterCtx slc, IStringable stringable) {
+   public KeyListenerF4DebugStringable(LayouterSwingCtx slc, IStringable stringable) {
       this.slc = slc;
       this.stringable = stringable;
 

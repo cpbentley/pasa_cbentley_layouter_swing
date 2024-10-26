@@ -15,7 +15,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -41,7 +41,7 @@ public class LayoutableAdapterForJComponent extends ObjectSwingLayouter implemen
 
    protected final JComponentReal real;
 
-   public LayoutableAdapterForJComponent(SwingLayouterCtx slc, JComponent component) {
+   public LayoutableAdapterForJComponent(LayouterSwingCtx slc, JComponent component) {
       super(slc);
 
       //#debug

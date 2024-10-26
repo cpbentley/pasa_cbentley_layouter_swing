@@ -20,7 +20,7 @@ import pasa.cbentley.core.src5.task.SaveCtxTask;
 import pasa.cbentley.layouter.src4.engine.PozerFactory;
 import pasa.cbentley.layouter.src4.engine.SizerFactory;
 import pasa.cbentley.layouter.src4.engine.Zer2DPozer;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.demo.log.LogConfiguratorDemoLayouter;
 import pasa.cbentley.layouter.swing.engine.JFrameLayouterDemo;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
@@ -29,7 +29,7 @@ import pasa.cbentley.swing.window.CBentleyFrame;
 
 public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
    protected final BOCtx            boc;
 
@@ -106,13 +106,7 @@ public abstract class RunLayouterDemoSwingAbstract extends RunSwingAbstract {
    public RunLayouterDemoSwingAbstract(IConfigU configU) {
       super(configU);
       boc = new BOCtx(uc);
-      slc = new SwingLayouterCtx(boc, sc);
-   }
-
-   public RunLayouterDemoSwingAbstract(SwingLayouterCtx slc) {
-      super(slc.getSwingCtx());
-      this.boc = slc.getBOC();
-      this.slc = slc;
+      slc = new LayouterSwingCtx(boc, sc);
    }
 
    public void constructHelpers() {

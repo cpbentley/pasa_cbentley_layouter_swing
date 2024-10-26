@@ -5,19 +5,19 @@
 package pasa.cbentley.layouter.swing.demo;
 
 import pasa.cbentley.core.src4.ctx.IConfigU;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 public class LayouterDemoFactory {
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
    protected final IConfigU         configU;
 
-   public LayouterDemoFactory(SwingLayouterCtx slc) {
+   public LayouterDemoFactory(LayouterSwingCtx slc) {
       this(slc,null);
    }
 
-   public LayouterDemoFactory(SwingLayouterCtx slc, IConfigU config) {
+   public LayouterDemoFactory(LayouterSwingCtx slc, IConfigU config) {
       this.slc = slc;
       this.configU = config;
    }

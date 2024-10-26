@@ -7,20 +7,20 @@ package pasa.cbentley.layouter.swing.engine;
 import javax.swing.JComponent;
 
 import pasa.cbentley.layouter.src4.engine.LayoutableChain;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 public class LayoutableChainSwing extends LayoutableChain {
 
    private JPanelLayoutable     owner;
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
    /**
     * 
     * @param lac
     * @param owner
     */
-   public LayoutableChainSwing(SwingLayouterCtx slc, JPanelLayoutable owner) {
+   public LayoutableChainSwing(LayouterSwingCtx slc, JPanelLayoutable owner) {
       super(slc);
       this.slc = slc;
       this.owner = owner;

@@ -5,7 +5,8 @@
 package pasa.cbentley.layouter.swing.ctx;
 
 import pasa.cbentley.core.src4.ctx.IConfig;
+import pasa.cbentley.layouter.src4.ctx.IConfigLayouter;
 
-public interface IConfigSwingLayouter extends IConfig {
+public interface IConfigLayouterSwing extends IConfigLayouter {
 
 }

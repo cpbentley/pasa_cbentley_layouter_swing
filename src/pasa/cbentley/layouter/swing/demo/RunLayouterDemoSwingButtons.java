@@ -11,7 +11,7 @@ import pasa.cbentley.core.src4.ctx.IConfigU;
 import pasa.cbentley.layouter.src4.engine.Area2DConfigurator;
 import pasa.cbentley.layouter.src4.engine.LayoutWillListenerAdapter;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
 import pasa.cbentley.layouter.swing.engine.LayoutableAdapterForJComponent;
 
@@ -22,10 +22,6 @@ public class RunLayouterDemoSwingButtons extends RunLayouterDemoSwingAbstract {
       constructHelpers();
    }
 
-   public RunLayouterDemoSwingButtons(SwingLayouterCtx slc) {
-      super(slc);
-      constructHelpers();
-   }
 
    public void buildDemo(JPanelLayoutable panel) {
       JButton buttonTeachMe = new JButton("Teach Me!");

@@ -6,7 +6,7 @@ package pasa.cbentley.layouter.swing.engine;
 
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.swing.window.CBentleyFrame;
 
 /**
@@ -26,7 +26,7 @@ public class JFrameLayouterDemo extends JFrameLayoutable implements IStringable 
 
    private KeyListenerF4DebugStringable keyLis;
 
-   public JFrameLayouterDemo(SwingLayouterCtx slc) {
+   public JFrameLayouterDemo(LayouterSwingCtx slc) {
       super(slc);
 
       keyLis = new KeyListenerF4DebugStringable(slc, panel);

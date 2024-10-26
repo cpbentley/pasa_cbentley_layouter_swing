@@ -8,19 +8,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import pasa.cbentley.core.src4.interfaces.C;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
 import pasa.cbentley.layouter.swing.engine.LayoutableChainSwing;
 
 public class ActionChainAlignmentIterate implements ActionListener {
 
-   protected final SwingLayouterCtx     slc;
+   protected final LayouterSwingCtx     slc;
 
    protected final JPanelLayoutable panel;
 
    protected final LayoutableChainSwing chain;
 
-   public ActionChainAlignmentIterate(SwingLayouterCtx slc, JPanelLayoutable panel, LayoutableChainSwing chain) {
+   public ActionChainAlignmentIterate(LayouterSwingCtx slc, JPanelLayoutable panel, LayoutableChainSwing chain) {
       this.slc = slc;
       this.panel = panel;
       this.chain = chain;

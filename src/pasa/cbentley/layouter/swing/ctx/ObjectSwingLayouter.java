@@ -7,9 +7,9 @@ import pasa.cbentley.core.src4.logging.IStringable;
 
 public class ObjectSwingLayouter implements IStringable {
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
-   public ObjectSwingLayouter(SwingLayouterCtx slc) {
+   public ObjectSwingLayouter(LayouterSwingCtx slc) {
       this.slc = slc;
       
    }

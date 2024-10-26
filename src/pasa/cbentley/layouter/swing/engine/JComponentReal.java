@@ -18,7 +18,7 @@ import pasa.cbentley.layouter.src4.interfaces.I2DReal;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
 import pasa.cbentley.layouter.swing.ctx.ObjectSwingLayouter;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 
 /**
  * Encapsulate the {@link JComponent} and implements {@link I2DReal} interface
@@ -32,7 +32,7 @@ public class JComponentReal extends ObjectSwingLayouter implements I2DReal {
 
    protected final JComponent component;
 
-   public JComponentReal(SwingLayouterCtx slc, JComponent component) {
+   public JComponentReal(LayouterSwingCtx slc, JComponent component) {
       super(slc);
       this.component = component;
 

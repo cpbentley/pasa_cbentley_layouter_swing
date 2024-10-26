@@ -12,7 +12,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.interfaces.C;
 import pasa.cbentley.core.src4.logging.ILogConfigurator;
 import pasa.cbentley.layouter.swing.ctx.ConfigSwingDemoLayouter;
-import pasa.cbentley.layouter.swing.ctx.IConfigSwingLayouter;
+import pasa.cbentley.layouter.swing.ctx.IConfigLayouterSwing;
 import pasa.cbentley.layouter.swing.engine.ConfiguratorForSwing;
 import pasa.cbentley.layouter.swing.engine.JPanelLayoutable;
 import pasa.cbentley.layouter.swing.engine.LayoutableChainSwing;

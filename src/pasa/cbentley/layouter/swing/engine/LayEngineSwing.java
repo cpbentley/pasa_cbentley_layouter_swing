@@ -15,7 +15,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.interfaces.I2DReal;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -30,11 +30,11 @@ public class LayEngineSwing extends LayouterEngineReal implements ITechLayout {
 
    private int              layoutID;
 
-   private SwingLayouterCtx slc;
+   private LayouterSwingCtx slc;
 
    protected ILayoutable    parentLayout;
 
-   public LayEngineSwing(SwingLayouterCtx slc, ILayoutableSwing compo, I2DReal real, int layoutID) {
+   public LayEngineSwing(LayouterSwingCtx slc, ILayoutableSwing compo, I2DReal real, int layoutID) {
       super(slc, compo, real);
       this.slc = slc;
       this.compLay = compo;

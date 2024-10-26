@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.layouter.src4.engine.Zer2DArea;
 import pasa.cbentley.layouter.src4.tech.IBOPozer;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -28,7 +28,7 @@ import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
  */
 public class DragPozerListener implements MouseListener, MouseMotionListener, MouseWheelListener {
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
    private Zer2DArea                areaOriginal;
 
@@ -46,7 +46,7 @@ public class DragPozerListener implements MouseListener, MouseMotionListener, Mo
 
    private JPanelLayoutable     root;
 
-   public DragPozerListener(SwingLayouterCtx slc, ILayoutableSwing layoutable, JPanelLayoutable root) {
+   public DragPozerListener(LayouterSwingCtx slc, ILayoutableSwing layoutable, JPanelLayoutable root) {
       this.slc = slc;
       this.root = root;
       if (layoutable == null) {

@@ -25,7 +25,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DPozer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutDelegate;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.ITechLayout;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -50,13 +50,13 @@ public class JPanelLayoutable extends JPanel implements ILayoutable, IStringable
 
    private Map<JComponent, ILayoutableSwing> map;
 
-   protected final SwingLayouterCtx          slc;
+   protected final LayouterSwingCtx          slc;
 
    private int                               topCount;
 
    protected ConfiguratorForSwing            configurator;
 
-   public JPanelLayoutable(SwingLayouterCtx slc) {
+   public JPanelLayoutable(LayouterSwingCtx slc) {
       this.slc = slc;
       configurator = new ConfiguratorForSwing(slc, this);
 

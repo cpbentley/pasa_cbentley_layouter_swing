@@ -22,16 +22,16 @@ import pasa.cbentley.swing.logging.SwingDebug;
  * @author Charles Bentley
  *
  */
-public class SwingLayouterCtx extends LayouterCtx {
+public class LayouterSwingCtx extends LayouterCtx {
 
    protected final C5Ctx          c5;
 
+   protected IConfigLayouterSwing config;
+
    protected final SwingCtx       sc;
 
-   protected IConfigSwingLayouter config;
-
-   public SwingLayouterCtx(BOCtx boc, SwingCtx sc) {
-      this((IConfigSwingLayouter) null, boc, sc);
+   public LayouterSwingCtx(BOCtx boc, SwingCtx sc) {
+      this(null, boc, sc);
    }
 
    /**
@@ -40,33 +40,18 @@ public class SwingLayouterCtx extends LayouterCtx {
     * @param boc cannot be null
     * @param sc cannot be null
     */
-   public SwingLayouterCtx(IConfigSwingLayouter config, BOCtx boc, SwingCtx sc) {
-      super(boc);
-      if (config == null) {
-         config = new ConfigSwingLayouterDefault(boc.getUC());
-      }
+   public LayouterSwingCtx(IConfigLayouterSwing config, BOCtx boc, SwingCtx sc) {
+      super((config == null) ? new ConfigSwingLayouterDefault(boc.getUC()) : config, boc);
       this.config = config;
       this.c5 = sc.getC5();
       this.sc = sc;
    }
 
-   public SwingLayouterCtx(UCtx uc) {
-      this(null, new BOCtx(uc), new SwingCtx(new C5Ctx(uc)));
-   }
-
-   public SwingLayouterCtx() {
-      this(new UCtx());
-   }
-
    /**
-    * Creates a new {@link SwingCtx} and uses {@link ConfigSwingLayouterDefault}
-    * @param boc
-    * @param c5
+    * 
+    * @param c
+    * @return
     */
-   public SwingLayouterCtx(BOCtx boc, C5Ctx c5) {
-      this(null, boc, new SwingCtx(c5));
-   }
-
    public LayoutableAdapterForJComponent createFor(JComponent c) {
       return new LayoutableAdapterForJComponent(this, c);
    }
@@ -75,16 +60,16 @@ public class SwingLayouterCtx extends LayouterCtx {
       return c5;
    }
 
-   public SwingDebug toSD() {
-      return sc.toSD();
+   public SwingCtx getSwingCtx() {
+      return sc;
    }
 
    public SwingCoreDebug toSCD() {
       return sc.toSCD();
    }
 
-   public SwingCtx getSwingCtx() {
-      return sc;
+   public SwingDebug toSD() {
+      return sc.toSD();
    }
 
    //#mdebug

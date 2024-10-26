@@ -22,7 +22,7 @@ import pasa.cbentley.layouter.src4.engine.Zer2DPozer;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutWillListener;
 import pasa.cbentley.layouter.src4.interfaces.ILayoutable;
 import pasa.cbentley.layouter.src4.tech.IBOPozer;
-import pasa.cbentley.layouter.swing.ctx.SwingLayouterCtx;
+import pasa.cbentley.layouter.swing.ctx.LayouterSwingCtx;
 import pasa.cbentley.layouter.swing.interfaces.ILayoutableSwing;
 
 /**
@@ -55,9 +55,9 @@ public class ConfiguratorForSwing implements IStringable {
 
    protected JPanelLayoutable       panel;
 
-   protected final SwingLayouterCtx slc;
+   protected final LayouterSwingCtx slc;
 
-   public ConfiguratorForSwing(SwingLayouterCtx slc, JPanelLayoutable panel) {
+   public ConfiguratorForSwing(LayouterSwingCtx slc, JPanelLayoutable panel) {
       this.slc = slc;
       this.panel = panel;
       extras = new IntToObjects(slc.getUC());
